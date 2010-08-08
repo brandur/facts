@@ -1,0 +1,13 @@
+= semantic_form_for @fact do |f|
+  -if @fact.errors.any?
+    #errorExplanation
+      %h2= "#{pluralize(@fact.errors.count, "error")} prohibited this fact from being saved:"
+      %ul
+        - @fact.errors.full_messages.each do |msg|
+          %li= msg
+
+  = f.input :category
+  = f.input :content, :as => :text
+
+  .actions
+    = f.submit 'Save'

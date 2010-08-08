@@ -1,0 +1,8 @@
+%p
+  Category:
+  = link_to @fact.category.name, category_path(@fact.category)
+%p= raw @fact.content_html
+
+= link_to 'Edit', edit_fact_path(@fact)
+\|
+= link_to 'Back', facts_path

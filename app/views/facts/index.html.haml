@@ -1,0 +1,21 @@
+%h1 Listing facts
+
+%table
+  %tr
+    %th Excerpt
+    %th Category
+    %th
+    %th
+    %th
+
+  - @facts.each do |fact|
+    %tr
+      %td= truncate strip_tags(fact.content), :length => 60
+      %td= fact.category ? fact.category.name : ''
+      %td= link_to 'Show', fact
+      %td= link_to 'Edit', edit_fact_path(fact)
+      %td= link_to 'Destroy', fact, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New fact', new_fact_path

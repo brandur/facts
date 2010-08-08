@@ -1,0 +1,140 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+#
+# Top-level
+#
+
+art:
+  name: Art
+  slug: art
+
+geography: 
+  name: Geography
+  slug: geography
+
+internet: 
+  name: Internet
+  slug: internet
+
+language: 
+  name: Language
+  slug: language
+
+math: 
+  name: Math
+  slug: math
+
+politics: 
+  name: Politics
+  slug: politics
+
+science: 
+  name: Science
+  slug: science
+
+world: 
+  name: World
+  slug: world
+
+#
+# Subcategories
+#
+
+# Art
+
+cubism: 
+  name: Cubism
+  slug: art/cubism
+  parent: art
+
+# Energy
+
+oil:
+  name: Oil
+  slug: science/energy/oil
+  parent: energy
+
+# Geography
+
+lake_agassiz:
+  name: Lake Agassiz
+  slug: geography/lake-agassiz
+  parent: geography
+
+# Italy
+
+sabina_guzzanti:
+  name: Sabina Guzzanti
+  slug: politics/italy/sabina-guzzanti
+  parent: italy
+
+# Math
+
+benfords_law:
+  name: "Benford's Law"
+  slug: math/benfords-law
+  parent: math
+
+# Politics
+
+italy:
+  name: Italy
+  slug: politics/italy
+  parent: politics
+
+# Russia
+
+kola_superdeep_borehole:
+  name: Kola Superdeep Borehole
+  slug: world/russia/kola-superdeep-borehole
+  parent: russia
+
+perimeter:
+  name: Perimeter
+  slug: world/russia/perimeter
+  parent: russia
+
+# Science
+
+arm_swinging:
+  name: Arm Swinging
+  slug: science/arm-swinging
+  parent: science
+
+dinosaur_killing_asteroid:
+  name: Dinosaur-killing Asteroid
+  slug: science/dinosaur-killing-asteroid
+  parent: science
+
+mach:
+  name: Mach
+  slug: science/mach
+  parent: science
+
+magnetar:
+  name: Magnetar
+  slug: science/magnetar
+  parent: science
+
+energy:
+  name: Energy
+  slug: science/energy
+  parent: science
+
+# World
+
+burj_dubai: 
+  name: Burj Dubai
+  slug: world/burj-dubai
+  parent: world
+
+cn_tower: 
+  name: CN Tower
+  slug: world/cn-tower
+  parent: world
+
+russia: 
+  name: Russia
+  slug: world/russia
+  parent: world
+

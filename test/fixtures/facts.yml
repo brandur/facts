@@ -1,0 +1,166 @@
+
+
+cubism_one:
+  content: A 20th century avant-garde art movement pioneered by Pablo Picasso and Georges Braque.
+  category: cubism
+
+cubism_two:
+  content: Often surfaces intersect at random angles, removing coherent sense of depth.
+  category: cubism
+
+cubism_three:
+  content: Background and object planes interpenetrate one another to create shallow ambiguous space.
+  category: cubism
+
+lake_agassiz_one:
+  content: An immense glacial lake in the center of North America.
+  category: lake_agassiz
+
+lake_agassiz_two:
+  content: Its area was greater than all of the modern Great Lakes combined (440 000 <math>km^2</math>, and it held more water than all lakes in the world today.
+  category: lake_agassiz
+
+lake_agassiz_three:
+  content: Last major drainage was about 8400 ya, into the Hudson Bay.
+  category: lake_agassiz
+
+lake_agassiz_four:
+  content: Lake Winnipeg, Lake Winnipegosis, Lake Manitoba, and Lake of the Woods are relics of the ancient lake.
+  category: lake_agassiz
+
+internet_one:
+  content: Chevrolet provided video clips and soundtracks for consumers to remix and edit for a commercial for its Tahoe. Consumers made it clear that they think the Tahoe is a gas-guzzling, environment ruining, Republican.
+  category: internet
+
+language_one:
+  content: '**ie** means _id est_ and means to "that is". **eg** means _exempli gratia_ and means "for example".'
+  category: language
+
+benfords_laws_one:
+  content: Describes a formula that predicts the frequencies of numbers found in many categories of statistics, specifically that given the digits 1-9, the earlier numbers occur with much greater frequency. ![Link](http://www.rexswain.com/benford.html).
+  category: benfords_law
+
+benfords_laws_two:
+  content: Predicted frequency of the number 1 is 30.1%, and from falls off to 2 at 17.6%, 3 at 12.5%, 4 and 9.7%, etc.
+  category: benfords_law
+
+benfords_laws_three:
+  content: Predicted frequency of the number 1 is 30.1%, and from falls off to 2 at 17.6%, 3 at 12.5%, 4 and 9.7%, etc.
+  category: benfords_law
+
+benfords_laws_four:
+  content: "Can be used to check for fake coin toss charts: the overwhelming odds that at some point in a series of 200 tosses, either heads or tails will come up six or more times in a row (something fakers don't know)."
+  category: benfords_law
+
+sabina_guzzanti_one:
+  content: "In July 2008, Sabina Guzzanti, a political satirist, made remarks about how the Pope would go to hell for his treatment of homosexuals. The Pope attempted to have her sent to prison for five years, but relented when the Italian government realized it didn't have a case."
+  category: sabina_guzzanti
+
+sabina_guzzanti_two:
+  content: In 2003, Sabina lampooned Prime Minister Berlusconi, and was she was subsequently sued by Silvio Berlusconi's Mediaset lawyers for "lies and insinuations", demonstrating that satire is not accepted in a media controlled by Berlusconi.
+  category: sabina_guzzanti
+
+arm_swinging_one:
+  content: While walking uses 12% less energy than holding one's arms, and reduces up-and-down (vertical ground reaction) movement 63%.
+  category: arm_swinging
+
+dinosaur_killing_asteroid_one:
+  content: Impacted 65 million years ago, 10 km in diameter, produced a blast equivalent to 100 teratons of TNT.
+  category: dinosaur_killing_asteroid
+
+mach_one:
+  content: Speed of an object moving through a fluid substance, divided by the speed of sound in that substance.
+  category: mach
+
+mach_two:
+  content: 'Speed of sounc in dry air: 343 m/s'
+  category: mach
+
+mach_three:
+  content: 'Subsonic: M < 1, sonic: M = 1, transonic: 0.8 < M < 1.2, supersonic: 1.2 < M < 5, hypersonic: M > 5'
+  category: mach
+  
+mach_four:
+  content: Required speed for low Earth orbit is approx. 7.5 km/s = M 25.4
+  category: mach
+
+mach_five:
+  content: 'Mach equation where <math>M</math> is Mach number, <math>v_s</math> is the speed of source (relative to medium), and <math>u</math> is the speed of sound in that medium: <math>\ M = \frac {{v_s}}{{u}}</math>'
+  category: mach
+
+magnetar_one:
+  content: Type of neutron star with a power magnetic field.
+  category: magnetar
+
+magnetar_two:
+  content: 20 km in diameter, but more mass than our Sun.
+  category: magnetar
+
+magnetar_three:
+  content: So dense that a thimble of the same material would weight 100M tons.
+  category: magnetar
+
+magnetar_four:
+  content: Rotate several times a second.
+  category: magnetar
+
+magnetar_five:
+  content: Strong magnetic fields decay after about 10k years.
+  category: magnetar
+
+magnetar_six:
+  content: Number of active magnetars in the Milky Way ~ 30M.
+  category: magnetar
+
+magnetar_seven:
+  content: A quake in 2004 on one, gave the equivalent of a dental X-ray to ISS astronauts at a range of 50k lightyears.
+  category: magnetar
+
+perimeter_one:
+  content: Russia has a doomsday device known as Perimeter, or Mertvaya Ruka ("Dead Hand"), designed to fire Russia's arsenal automatically upon detecting an American nuclear strike.
+  category: perimeter
+
+perimeter_two:
+  content: Uses ground-based sensors to detect a strike.
+  category: perimeter
+
+perimeter_three:
+  content: Built in 1985, still active today.
+  category: perimeter
+
+burj_dubai_one:
+  content: Will stand at a reported 818 m (official height will not be revealed until completion).
+  category: burj_dubai
+
+burj_dubai_two:
+  content: Laid end to end, the rods that reinforce the structure would stretch more than a quarter of the way around the world.
+  category: burj_dubai
+
+burj_dubai_three:
+  content: World's fastest elevators at 64 km/h.
+  category: burj_dubai
+
+burj_dubai_four:
+  content: Nightclub on floors 144 to 146.
+  category: burj_dubai
+
+cn_tower_one:
+  content: Was the tallest free-standing structure at 555 m until being surpassed in 2007 by the _Burj Dubai_.
+  category: cn_tower
+
+cn_tower_two:
+  content: CN stands Canadian National, the railway that built the tower, it's now expanded by many to Canada's National (Tower) instead.
+  category: cn_tower
+
+kola_superdeep_borehole_one:
+  content: Scientific drilling project of the former USSR that drilled 12 261 m, the deepest hole ever made.
+  category: kola_superdeep_borehole
+
+kola_superdeep_borehole_two:
+  content: Project was stopped when temperatures in the hole turned out to be 180 degrees C instead of the expected 10 degrees C.
+  category: kola_superdeep_borehole
+
+kola_superdeep_borehole_three:
+  content: Temperatures at 15 000 m would have been a project 300 degrees C, at which the drill bit would no longer work.
+  category: kola_superdeep_borehole
+

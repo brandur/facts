@@ -1,0 +1,16 @@
+%h1= @category.name
+
+%ul
+  - @category.facts.each do |f|
+    %li= raw f.content_html
+
+- @category.children.each do |c|
+  %h2= c.name
+
+  %ul
+    - c.facts.each do |f|
+      %li= raw f.content_html
+
+= link_to 'Edit', edit_category_path(@category)
+\|
+= link_to 'Back', categories_path
