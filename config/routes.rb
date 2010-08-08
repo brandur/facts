@@ -6,6 +6,8 @@ Facts::Application.routes.draw do
   # slashes
   match '/categories/*slug', :to => 'categories#show'
 
+  root :to => "categories#index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,5 +1,8 @@
 %h1= @category.name
 
+- @fact = Fact.new :category => @category
+= render 'facts/form'
+
 %ul
   - @category.facts.each do |f|
     %li= raw f.content_html
@@ -9,7 +12,9 @@
 
   %ul
     - c.facts.each do |f|
-      %li= raw f.content_html
+      %li
+        = raw f.content_html
+        = link_to 'Permalink', fact_path(f)
 
 = link_to 'Edit', edit_category_path(@category)
 \|

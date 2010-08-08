@@ -6,8 +6,12 @@
         - @fact.errors.full_messages.each do |msg|
           %li= msg
 
-  = f.input :category
-  = f.input :content, :as => :text
+  - if !@fact.category
+    = f.input :category
+  - else
+    = f.input :category_id, :value => @fact.category.id, :as => :hidden
+  .fact_content
+    = f.input :content, :hint => 'Fact body. Markdown content is accepted.'
 
   .actions
     = f.submit 'Save'

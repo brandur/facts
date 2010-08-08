@@ -10,7 +10,7 @@
   - @categories.each do |category|
     %tr
       %td= category.name
-      %td= link_to 'Show', show_category_path(category)
+      %td= link_to 'Show', category_path(category)
       %td= link_to 'Edit', edit_category_path(category)
       %td= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete
 

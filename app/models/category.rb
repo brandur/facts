@@ -11,10 +11,6 @@ class Category < ActiveRecord::Base
   default_scope :order => :name
   scope :root, where(:category_id => nil)
 
-  #def to_param
-    #slug
-  #end
-
   private
 
   def build_slug
