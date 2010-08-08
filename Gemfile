@@ -5,7 +5,7 @@ gem 'rails', '3.0.0.rc'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-#gem 'acts_as_tree', :git => 'http://github.com/parasew/acts_as_tree.git'
+gem 'acts_as_tree', :git => 'http://github.com/parasew/acts_as_tree.git'
 gem 'formtastic', :git => 'http://github.com/justinfrench/formtastic.git', :branch => 'rails3'
 gem 'haml'
 gem 'rdiscount'

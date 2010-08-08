@@ -1,5 +1,10 @@
 %h1= @category.name
 
+- if @category.ancestors.count > 0
+  %ul
+    - @category.ancestors.each do |p|
+      %li= link_to p.name, category_path(p)
+
 - @fact = Fact.new :category => @category
 = render 'facts/form'
 

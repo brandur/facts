@@ -1,6 +1,6 @@
 class Category < ActiveRecord::Base
-  belongs_to :parent, :class_name => "Category", :foreign_key => "category_id"
-  has_many :children, :class_name => "Category", :foreign_key => "category_id"
+  acts_as_tree :foreign_key => :category_id, :order => :name
+
   has_many :facts
 
   validates_presence_of :name, :slug

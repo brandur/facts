@@ -13,7 +13,7 @@ class FactsController < ApplicationController
   # GET /facts/1
   # GET /facts/1.json
   def show
-    @fact = Fact.find(params[:id], :include => { :category => :parent })
+    @fact = Fact.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
