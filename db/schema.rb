@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(:version => 20100616030930) do
     t.datetime "updated_at"
   end
 
+  add_index "categories", ["slug"], :name => "index_categories_on_slug"
+
   create_table "facts", :force => true do |t|
     t.integer  "category_id"
     t.string   "content"
