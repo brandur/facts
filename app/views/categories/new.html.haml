@@ -1,5 +1,5 @@
 %h1 New category
 
-= render 'form'
+= render :partial => 'form', :locals => { :category => @category }
 
 = link_to 'Back', categories_path

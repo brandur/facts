@@ -8,6 +8,14 @@ class CategoryTest < ActiveSupport::TestCase
     assert c.valid?
   end
 
+  test "should validate non-numerical slug" do
+    c = Category.create :name => '329'
+    assert c.invalid?
+    c1 = Category.create :name => 'top'
+    c2 = Category.create :name => '452', :parent => c1
+    assert c2.valid?
+  end
+
   test "should build slug" do
     c = Category.create :name => "Cities of the World"
     assert c.valid?
@@ -25,5 +33,13 @@ class CategoryTest < ActiveSupport::TestCase
     c = Category.create :name => "Cities of the World"
     c.save
     assert c.slug
+  end
+
+  test "should perform search" do
+    categories = Category.search "pe"
+    assert_equal 2, categories.count
+    names = categories.collect(&:name).to_a
+    assert names.include? 'Kola Superdeep Borehole'
+    assert names.include? 'Perimeter'
   end
 end

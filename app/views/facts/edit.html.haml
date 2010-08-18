@@ -1,6 +1,6 @@
 %h1 Editing fact
 
-= render 'form'
+= render :partial => 'form', :locals => { :fact => @fact }
 
 = link_to 'Show', @fact
 \|

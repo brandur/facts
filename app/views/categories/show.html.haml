@@ -5,8 +5,8 @@
     - @category.ancestors.each do |p|
       %li= link_to p.name, category_path(p)
 
-- @fact = Fact.new :category => @category
-= render 'facts/form'
+= render :partial => 'facts/form', :locals => { :fact => Fact.new(:category_id => @category.id) }
+= render :partial => 'form', :locals => { :category => Category.new(:category_id => @category.id) }
 
 %ul
   - @category.facts.each do |f|

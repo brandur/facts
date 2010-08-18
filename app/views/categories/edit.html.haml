@@ -1,6 +1,6 @@
 %h1 Editing category
 
-= render 'form'
+= render :partial => 'form', :locals => { :category => @category }
 
 = link_to 'Show', category_path(@category)
 \|

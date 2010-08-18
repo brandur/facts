@@ -1,6 +1,8 @@
 class CategoriesController < ApplicationController
   include ApplicationHelper
 
+  skip_before_filter :verify_authenticity_token
+
   # GET /categories
   # GET /categories.json
   def index
@@ -16,14 +18,14 @@ class CategoriesController < ApplicationController
   # GET /categories/1.json
   def show
     if params[:slug]
-      @category = Category.find_by_slug(params[:slug])
+      @category = Category.find_by_slug(params[:slug], :include => :facts)
     else
-      @category = Category.find(params[:id])
+      @category = Category.find(params[:id], :include => :facts)
     end
 
     respond_to do |format|
       format.html
-      format.json { render :json => @category }
+      format.json { render :json => @category.to_json }
     end
   end
 
@@ -34,7 +36,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render :json => @category }
+      format.json { render :json => @category.to_json }
     end
   end
 
@@ -50,7 +52,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to(show_category_path(@category), :notice => 'Category was successfully created.') }
+        format.html { redirect_to(category_path(@category), :notice => 'Category was successfully created.') }
         format.json { render :json => @category, :status => :created, :location => @category }
       else
         format.html { render :action => "new" }
@@ -66,7 +68,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.update_attributes(params[:category])
-        format.html { redirect_to(show_category_path(@category), :notice => 'Category was successfully updated.') }
+        format.html { redirect_to(category_path(@category), :notice => 'Category was successfully updated.') }
         format.json { head :ok }
       else
         format.html { render :action => "edit" }
@@ -85,5 +87,11 @@ class CategoriesController < ApplicationController
       format.html { redirect_to(categories_url) }
       format.json { head :ok }
     end
+  end
+
+  def search
+    categories = Category.search(params[:query])
+    categories = categories.includes(:facts) if Boolean.parse(params[:include_facts])
+    render :json => categories.collect{ |c| c.to_json }.to_json
   end
 end

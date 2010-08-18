@@ -1,11 +1,13 @@
 class FactsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
+
   # GET /facts
   # GET /facts.json
   def index
     @facts = Fact.all :include => :category
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.json  { render :json => @facts }
     end
   end
@@ -16,7 +18,7 @@ class FactsController < ApplicationController
     @fact = Fact.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # show.html.haml
       format.json  { render :json => @fact }
     end
   end
@@ -27,7 +29,7 @@ class FactsController < ApplicationController
     @fact = Fact.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new.html.haml
       format.json { render :json => @fact }
     end
   end
@@ -79,5 +81,9 @@ class FactsController < ApplicationController
       format.html { redirect_to(facts_url) }
       format.json { head :ok }
     end
+  end
+
+  def search
+    render :json => Fact.search(params[:query])
   end
 end

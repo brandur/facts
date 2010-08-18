@@ -21,4 +21,9 @@ class FactTest < ActiveSupport::TestCase
     f.content = "the world is a big place"
     assert f.valid?
   end
+
+  test "should perform search" do
+    facts = Fact.search "meter"
+    assert_equal 3, facts.count
+  end
 end

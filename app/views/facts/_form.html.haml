@@ -1,15 +1,15 @@
-= semantic_form_for @fact do |f|
-  -if @fact.errors.any?
+= semantic_form_for fact do |f|
+  -if fact.errors.any?
     #errorExplanation
-      %h2= "#{pluralize(@fact.errors.count, "error")} prohibited this fact from being saved:"
+      %h2= "#{pluralize(fact.errors.count, "error")} prohibited this fact from being saved:"
       %ul
-        - @fact.errors.full_messages.each do |msg|
+        - fact.errors.full_messages.each do |msg|
           %li= msg
 
-  - if !@fact.category
+  - if !fact.category
     = f.input :category
   - else
-    = f.input :category_id, :value => @fact.category.id, :as => :hidden
+    = f.input :category_id, :value => fact.category.id, :as => :hidden
   .fact_content
     = f.input :content, :hint => 'Fact body. Markdown content is accepted.'
 

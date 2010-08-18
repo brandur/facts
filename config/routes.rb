@@ -1,10 +1,11 @@
 Facts::Application.routes.draw do
   resources :categories, :constraints => { :id => /[0-9]+/ }
-  resources :facts
+  resources :facts, :constraints => { :id => /[0-9]+/ }
 
-  # Include these otherwise our category slugs could not contain forward
-  # slashes
+  match '/categories/search.json', :to => 'categories#search'
   match '/categories/*slug', :to => 'categories#show'
+
+  match '/facts/search.json', :to => 'facts#search'
 
   root :to => "categories#index"
 
