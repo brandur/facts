@@ -6,6 +6,8 @@ gem 'rails', '3.0.0.rc'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'acts_as_tree', :git => 'http://github.com/parasew/acts_as_tree.git'
+gem 'authlogic'
+gem 'bcrypt-ruby'
 gem 'formtastic', :git => 'http://github.com/justinfrench/formtastic.git', :branch => 'rails3'
 gem 'haml'
 gem 'rdiscount'
