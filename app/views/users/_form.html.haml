@@ -1,0 +1,13 @@
+= semantic_form_for(@user) do |f|
+  - if @user.errors.any?
+    #errorExplanation
+      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this account from being saved:"
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+  = f.input :login
+  = f.input :password
+  = f.input :password_confirmation
+
+  .actions
+    = f.submit 'Create'

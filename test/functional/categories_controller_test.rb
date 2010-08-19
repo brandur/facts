@@ -2,7 +2,10 @@ require 'test_helper'
 
 class CategoriesControllerTest < ActionController::TestCase
   setup do
-    @category = categories(:world)
+    @category = categories(:perimeter)
+    UserSession.create(users(:rand))
+    # Destroy with:
+    #@controller.send(:current_user_session).destroy
   end
 
   test "should get index" do
@@ -18,7 +21,7 @@ class CategoriesControllerTest < ActionController::TestCase
 
   test "should create category" do
     # Rename the category so its slug doesn't collide with our fixture
-    @category.name = "All the Worlds"
+    @category.name = 'All the Worlds'
 
     assert_difference('Category.count') do
       post :create, :category => @category.attributes

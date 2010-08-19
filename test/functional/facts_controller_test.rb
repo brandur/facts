@@ -3,6 +3,7 @@ require 'test_helper'
 class FactsControllerTest < ActionController::TestCase
   setup do
     @fact = facts(:cubism_one)
+    UserSession.create(users(:rand))
   end
 
   test "should get index" do

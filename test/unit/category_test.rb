@@ -2,35 +2,35 @@ require 'test_helper'
 
 class CategoryTest < ActiveSupport::TestCase
   test "should validate presence of name" do
-    c = Category.create
+    c = Category.create :user => users(:rand)
     assert c.invalid?
     c.name = "Cities of the World"
     assert c.valid?
   end
 
   test "should validate non-numerical slug" do
-    c = Category.create :name => '329'
+    c = Category.create :name => '329', :user => users(:rand)
     assert c.invalid?
-    c1 = Category.create :name => 'top'
-    c2 = Category.create :name => '452', :parent => c1
+    c1 = Category.create :name => 'top', :user => users(:rand)
+    c2 = Category.create :name => '452', :parent => c1, :user => users(:rand)
     assert c2.valid?
   end
 
   test "should build slug" do
-    c = Category.create :name => "Cities of the World"
+    c = Category.create :name => "Cities of the World", :user => users(:rand)
     assert c.valid?
     assert_equal "cities-of-the-world", c.slug
   end
 
   test "should build slug based on parent" do
-    c1 = Category.create :name => "Geography"
-    c2 = Category.create :name => "Cities of the World", :parent => c1
+    c1 = Category.create :name => "Geography", :user => users(:rand)
+    c2 = Category.create :name => "Cities of the World", :parent => c1, :user => users(:rand)
     assert c2.valid?
     assert_equal "geography/cities-of-the-world", c2.slug
   end
 
   test "should have slug after save" do
-    c = Category.create :name => "Cities of the World"
+    c = Category.create :name => "Cities of the World", :user => users(:rand)
     c.save
     assert c.slug
   end

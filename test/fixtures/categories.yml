@@ -7,34 +7,42 @@
 art:
   name: Art
   slug: art
+  user: rand
 
 geography: 
   name: Geography
   slug: geography
+  user: rand
 
 internet: 
   name: Internet
   slug: internet
+  user: rand
 
 language: 
   name: Language
   slug: language
+  user: rand
 
 math: 
   name: Math
   slug: math
+  user: rand
 
 politics: 
   name: Politics
   slug: politics
+  user: rand
 
 science: 
   name: Science
   slug: science
+  user: rand
 
 world: 
   name: World
   slug: world
+  user: rand
 
 #
 # Subcategories
@@ -46,6 +54,7 @@ cubism:
   name: Cubism
   slug: art/cubism
   parent: art
+  user: rand
 
 # Energy
 
@@ -53,6 +62,7 @@ oil:
   name: Oil
   slug: science/energy/oil
   parent: energy
+  user: rand
 
 # Geography
 
@@ -60,6 +70,7 @@ lake_agassiz:
   name: Lake Agassiz
   slug: geography/lake-agassiz
   parent: geography
+  user: rand
 
 # Italy
 
@@ -67,6 +78,7 @@ sabina_guzzanti:
   name: Sabina Guzzanti
   slug: politics/italy/sabina-guzzanti
   parent: italy
+  user: rand
 
 # Math
 
@@ -74,6 +86,7 @@ benfords_law:
   name: "Benford's Law"
   slug: math/benfords-law
   parent: math
+  user: rand
 
 # Politics
 
@@ -81,6 +94,7 @@ italy:
   name: Italy
   slug: politics/italy
   parent: politics
+  user: rand
 
 # Russia
 
@@ -88,11 +102,13 @@ kola_superdeep_borehole:
   name: Kola Superdeep Borehole
   slug: world/russia/kola-superdeep-borehole
   parent: russia
+  user: rand
 
 perimeter:
   name: Perimeter
   slug: world/russia/perimeter
   parent: russia
+  user: rand
 
 # Science
 
@@ -100,26 +116,31 @@ arm_swinging:
   name: Arm Swinging
   slug: science/arm-swinging
   parent: science
+  user: rand
 
 dinosaur_killing_asteroid:
   name: Dinosaur-killing Asteroid
   slug: science/dinosaur-killing-asteroid
   parent: science
+  user: rand
 
 mach:
   name: Mach
   slug: science/mach
   parent: science
+  user: rand
 
 magnetar:
   name: Magnetar
   slug: science/magnetar
   parent: science
+  user: rand
 
 energy:
   name: Energy
   slug: science/energy
   parent: science
+  user: rand
 
 # World
 
@@ -127,14 +148,17 @@ burj_dubai:
   name: Burj Dubai
   slug: world/burj-dubai
   parent: world
+  user: rand
 
 cn_tower: 
   name: CN Tower
   slug: world/cn-tower
   parent: world
+  user: rand
 
 russia: 
   name: Russia
   slug: world/russia
   parent: world
+  user: rand
 

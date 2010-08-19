@@ -1,5 +1,5 @@
 = semantic_form_for fact do |f|
-  -if fact.errors.any?
+  - if fact.errors.any?
     #errorExplanation
       %h2= "#{pluralize(fact.errors.count, "error")} prohibited this fact from being saved:"
       %ul

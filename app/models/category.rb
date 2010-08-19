@@ -1,11 +1,12 @@
 class Category < ActiveRecord::Base
   acts_as_tree :foreign_key => :category_id, :order => :name
 
+  belongs_to :user
   has_many :facts
 
   # Top-level category names cannot be only numerical
   validates_format_of :slug, :with => /[^0-9]/, :message => 'cannot be numerical at top-level'
-  validates_presence_of :name, :slug
+  validates_presence_of :name, :slug, :user_id
   validates_uniqueness_of :slug
 
   before_validation :build_slug

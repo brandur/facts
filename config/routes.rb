@@ -1,6 +1,11 @@
 Facts::Application.routes.draw do
   resources :categories, :constraints => { :id => /[0-9]+/ }
   resources :facts, :constraints => { :id => /[0-9]+/ }
+  resources :users
+  resources :user_sessions
+
+  # Destroy without ID (not standard REST)
+  match '/user_sessions(.:format)', :to => 'user_sessions#destroy', :via => :delete
 
   match '/categories/search.json', :to => 'categories#search'
   match '/categories/*slug', :to => 'categories#show'
