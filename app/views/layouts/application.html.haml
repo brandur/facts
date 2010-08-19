@@ -10,6 +10,14 @@
     = yield :head
   %body
     #content
+      %p
+        - if current_user
+          Logged in as 
+          = link_to("#{current_user.login}.", current_user)
+          = button_to('Sign out.', user_sessions_url, :method => :delete)
+        - else
+          Not logged in.
+          = link_to('Sign in.', new_user_session_url)
       - flash.each do |name, msg|
         = content_tag :div, msg, :id => "flash_#{name}", :class => 'flash'
         - content_for(:javascript) do

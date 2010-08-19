@@ -14,7 +14,7 @@
       %td= fact.category ? fact.category.name : ''
       %td= link_to 'Show', fact
       %td= link_to 'Edit', edit_fact_path(fact)
-      %td= link_to 'Destroy', fact, :confirm => 'Are you sure?', :method => :delete
+      %td= button_to 'Destroy', fact, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
