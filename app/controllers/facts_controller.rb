@@ -46,15 +46,16 @@ class FactsController < ApplicationController
     @fact = Fact.new(params[:fact])
 
     respond_to do |format|
-      if authorized?(@fact.category)
-        if @fact.save
-          format.html { redirect_to(@fact, :notice => 'Fact was successfully created.') }
-          format.json { render :json => @fact, :status => :created, :location => @fact }
-        else
-          format.html { render :action => "new" }
-          format.json { render :json => @fact.errors, :status => :unprocessable_entity }
-        end
-      else
+      begin
+        raise UnauthorizedError unless authorized?(@fact.category)
+        raise SaveError unless @fact.save
+
+        format.html { redirect_to(@fact, :notice => 'Fact was successfully created.') }
+        format.json { render :json => @fact, :status => :created, :location => @fact }
+      rescue SaveError
+        format.html { render :action => "new" }
+        format.json { render :json => @fact.errors, :status => :unprocessable_entity }
+      rescue UnauthorizedError
         format.html { redirect_to(facts_url, :notice => 'Fact category must be owned by you.') }
         format.json { head :unauthorized }
       end
@@ -67,15 +68,16 @@ class FactsController < ApplicationController
     @fact = Fact.find(params[:id], :include => :category)
 
     respond_to do |format|
-      if authorized? @fact.category 
-        if @fact.update_attributes(params[:fact])
-          format.html { redirect_to(@fact, :notice => 'Fact was successfully updated.') }
-          format.json { head :ok }
-        else
-          format.html { render :action => "edit" }
-          format.json { render :json => @fact.errors, :status => :unprocessable_entity }
-        end
-      else
+      begin
+        raise UnauthorizedError unless authorized? @fact.category 
+        raise SaveError unless @fact.update_attributes(params[:fact])
+
+        format.html { redirect_to(@fact, :notice => 'Fact was successfully updated.') }
+        format.json { head :ok }
+      rescue SaveError
+        format.html { render :action => "edit" }
+        format.json { render :json => @fact.errors, :status => :unprocessable_entity }
+      rescue UnauthorizedError
         format.html { redirect_to(facts_url, :notice => 'No update rights to a fact not owned by you.') }
         format.json { head :unauthorized }
       end
@@ -88,11 +90,13 @@ class FactsController < ApplicationController
     @fact = Fact.find(params[:id], :include => :category)
 
     respond_to do |format|
-      if authorized? @fact.category
+      begin
+        raise UnauthorizedError unless authorized? @fact.category
+
         @fact.destroy
         format.html { redirect_to(facts_url, :notice => 'Fact was successfully deleted.') }
         format.json { head :ok }
-      else
+      rescue UnauthorizedError
         format.html { redirect_to(facts_url, :notice => 'No deletion rights to a fact not owned by you.') }
         format.json { head :unauthorized }
       end

@@ -48,4 +48,10 @@ class ApplicationController < ActionController::Base
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
   end
+
+  class SaveError < RuntimeError
+  end
+
+  class UnauthorizedError < RuntimeError
+  end
 end

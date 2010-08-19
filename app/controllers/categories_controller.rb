@@ -53,15 +53,16 @@ class CategoriesController < ApplicationController
     @category.user = current_user
 
     respond_to do |format|
-      if @category.parent.nil? || authorized?(@category.parent)
-        if @category.save
-          format.html { redirect_to(category_path(@category), :notice => 'Category was successfully created.') }
-          format.json { render :json => @category, :status => :created, :location => @category }
-        else
-          format.html { render :action => "new" }
-          format.json { render :json => @category.errors, :status => :unprocessable_entity }
-        end
-      else
+      begin
+        raise UnauthorizedError unless @category.parent.nil? || authorized?(@category.parent)
+        raise SaveError unless @category.save
+
+        format.html { redirect_to(category_path(@category), :notice => 'Category was successfully created.') }
+        format.json { render :json => @category, :status => :created, :location => @category }
+      rescue SaveError
+        format.html { render :action => "new" }
+        format.json { render :json => @category.errors, :status => :unprocessable_entity }
+      rescue UnauthorizedError
         format.html { redirect_to(categories_url, :notice => 'Parent category must be owned by you.') }
         format.json { head :unauthorized }
       end
@@ -74,15 +75,16 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
 
     respond_to do |format|
-      if authorized? @category 
-        if @category.update_attributes(params[:category])
-          format.html { redirect_to(category_path(@category), :notice => 'Category was successfully updated.') }
-          format.json { head :ok }
-        else
-          format.html { render :action => "edit" }
-          format.json { render :json => @category.errors, :status => :unprocessable_entity }
-        end
-      else
+      begin
+        raise UnauthorizedError unless authorized? @category
+        raise SaveError unless @category.update_attributes(params[:category])
+
+        format.html { redirect_to(category_path(@category), :notice => 'Category was successfully updated.') }
+        format.json { head :ok }
+      rescue SaveError
+        format.html { render :action => "edit" }
+        format.json { render :json => @category.errors, :status => :unprocessable_entity }
+      rescue UnauthorizedError
         format.html { redirect_to(categories_url, :notice => 'No update rights to a category not owned by you.') }
         format.json { head :unauthorized }
       end
@@ -95,11 +97,13 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
 
     respond_to do |format|
-      if authorized? @category
+      begin
+        raise UnauthorizedError unless authorized? @category
+
         @category.destroy
         format.html { redirect_to(categories_url, :notice => 'Category was successfully deleted.') }
         format.json { head :ok }
-      else
+      rescue UnauthorizedError
         format.html { redirect_to(categories_url, :notice => 'No deletion rights to a category not owned by you.') }
         format.json { head :unauthorized }
       end
