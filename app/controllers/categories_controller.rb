@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
 
   before_filter :require_user, :only => [ :create, :destroy, :edit, :new, :update ]
   skip_before_filter :verify_authenticity_token
+  set_tab :categories
 
   # GET /categories
   # GET /categories.json

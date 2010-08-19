@@ -12,6 +12,7 @@ gem 'formtastic', :git => 'http://github.com/justinfrench/formtastic.git', :bran
 gem 'haml'
 gem 'rdiscount'
 gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'tabs_on_rails'
 
 # Use unicorn as the web server
 # gem 'unicorn'

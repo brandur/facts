@@ -1,6 +1,7 @@
 class FactsController < ApplicationController
   before_filter :require_user, :only => [ :create, :destroy, :edit, :new, :update ]
   skip_before_filter :verify_authenticity_token
+  set_tab :facts
 
   # GET /facts
   # GET /facts.json

@@ -10,6 +10,9 @@
     = yield :head
   %body
     #content
+      - tabs_tag do |tab|
+        = tab.categories 'Categories', categories_path
+        = tab.facts      'Facts',      facts_path
       %p
         - if current_user
           Logged in as 
