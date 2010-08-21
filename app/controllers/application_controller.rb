@@ -31,15 +31,10 @@ class ApplicationController < ActionController::Base
 
   def require_user
     unless current_user || authenticated_with_params?
-      if params[:login]
-        puts "authenticated_Wth_params = #{authenticated_with_params?}"
-      end
       store_location
       flash[:notice] = 'You must be logged in to access this page'
       redirect_to(new_user_session_url)
       false
-    else
-      puts 'ACCESS GRANTED'
     end
   end
 
