@@ -7,6 +7,26 @@ class FactsControllerAuthorizationTest < ActionController::TestCase
     @fact = facts(:cubism_one)
   end
 
+  test "should be able to create fact with params login" do
+    @fact.content = 'Fact created with params login'
+
+    assert_difference('Fact.count') do
+      post :create, :fact => @fact.attributes, :login => 'rand', :password => 'stone-of-tears9'
+    end
+
+    assert_redirected_to fact_path(assigns(:fact))
+  end
+
+  test "should not be able to create fact with bad params login" do
+    @fact.content = 'Fact created with bad params login'
+
+    assert_no_difference('Fact.count') do
+      post :create, :fact => @fact.attributes, :login => 'rand', :password => 'stone-of-tears0'
+    end
+
+    assert_redirected_to facts_path
+  end
+
   test "should not be able to create fact without login" do
     @fact.content = 'No fact can be created without a login'
 

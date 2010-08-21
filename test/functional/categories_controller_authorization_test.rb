@@ -7,6 +7,26 @@ class CategoriesControllerAuthorizationTest < ActionController::TestCase
     @category = categories(:perimeter)
   end
 
+  test "should be able to create category with params login" do
+    @category.name = 'Category Created with Params Login'
+
+    assert_difference('Category.count') do
+      post :create, :category => @category.attributes, :login => 'rand', :password => 'stone-of-tears9'
+    end
+
+    assert_redirected_to category_path(assigns(:category))
+  end
+
+  test "should not be able to create category with bad params login" do
+    @category.name = 'Category Created with Bad Params Login'
+
+    assert_no_difference('Category.count') do
+      post :create, :category => @category.attributes, :login => 'rand', :password => 'stone-of-tears0'
+    end
+
+    assert_redirected_to categories_path
+  end
+
   test "should not be able to create category without login" do
     @category.name = 'This Category is not Going In'
 
