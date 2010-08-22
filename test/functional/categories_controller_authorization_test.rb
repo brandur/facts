@@ -12,7 +12,7 @@ class CategoriesControllerAuthorizationTest < ActionController::TestCase
 
     assert_difference('Category.count') do
       encode_http_credentials
-      post :create, :category => @category.attributes, :format => 'json'
+      post :create, :category => @category.attributes, :format => :json
     end
 
     assert_response :created
@@ -23,7 +23,7 @@ class CategoriesControllerAuthorizationTest < ActionController::TestCase
 
     assert_no_difference('Category.count') do
       encode_http_credentials 'rand', 'bad-pass'
-      post :create, :category => @category.attributes, :format => 'json'
+      post :create, :category => @category.attributes, :format => :json
     end
 
     assert_response :unauthorized
