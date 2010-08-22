@@ -16,4 +16,8 @@ end
 
 class ActionController::TestCase
   setup :activate_authlogic
+
+  def encode_http_credentials(user = 'rand', password = 'stone-of-tears9')
+    @request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials(user, password)
+  end
 end

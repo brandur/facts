@@ -11,20 +11,22 @@ class FactsControllerAuthorizationTest < ActionController::TestCase
     @fact.content = 'Fact created with params login'
 
     assert_difference('Fact.count') do
-      post :create, :fact => @fact.attributes, :login => 'rand', :password => 'stone-of-tears9'
+      encode_http_credentials
+      post :create, :fact => @fact.attributes, :format => :json
     end
 
-    assert_redirected_to fact_path(assigns(:fact))
+    assert_response :created
   end
 
   test "should not be able to create fact with bad params login" do
     @fact.content = 'Fact created with bad params login'
 
     assert_no_difference('Fact.count') do
-      post :create, :fact => @fact.attributes, :login => 'rand', :password => 'stone-of-tears0'
+      encode_http_credentials 'rand', 'bad-pass'
+      post :create, :fact => @fact.attributes, :format => :json
     end
 
-    assert_redirected_to facts_path
+    assert_response :unauthorized
   end
 
   test "should not be able to create fact without login" do

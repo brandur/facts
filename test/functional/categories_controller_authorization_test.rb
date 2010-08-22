@@ -11,20 +11,22 @@ class CategoriesControllerAuthorizationTest < ActionController::TestCase
     @category.name = 'Category Created with Params Login'
 
     assert_difference('Category.count') do
-      post :create, :category => @category.attributes, :login => 'rand', :password => 'stone-of-tears9'
+      encode_http_credentials
+      post :create, :category => @category.attributes, :format => 'json'
     end
 
-    assert_redirected_to category_path(assigns(:category))
+    assert_response :created
   end
 
   test "should not be able to create category with bad params login" do
     @category.name = 'Category Created with Bad Params Login'
 
     assert_no_difference('Category.count') do
-      post :create, :category => @category.attributes, :login => 'rand', :password => 'stone-of-tears0'
+      encode_http_credentials 'rand', 'bad-pass'
+      post :create, :category => @category.attributes, :format => 'json'
     end
 
-    assert_redirected_to categories_path
+    assert_response :unauthorized
   end
 
   test "should not be able to create category without login" do

@@ -21,20 +21,20 @@ class ApplicationController < ActionController::Base
     @current_user = current_user_session && current_user_session.record
   end
 
-  def authenticated_with_params?
-    if params[:login] && params[:password]
-      user_session = UserSession.create(:login => params[:login], :password => params[:password])
-      @current_user_session, @current_user = user_session, user_session.record if user_session.valid?
-      true
-    end
-  end
-
   def require_user
-    unless current_user || authenticated_with_params?
-      store_location
-      flash[:notice] = 'You must be logged in to access this page'
-      redirect_to(new_user_session_url)
-      false
+    case request.format
+    when Mime::HTML
+      unless current_user
+        store_location
+        flash[:notice] = 'You must be logged in to access this page'
+        redirect_to(new_user_session_url)
+        false
+      end
+    else
+      authenticate_or_request_with_http_basic do |username, password|
+        user_session = UserSession.create(:login => username, :password => password)
+        user_session.valid?
+      end
     end
   end
 
