@@ -1,0 +1,16 @@
+%ul
+  - category.facts.each do |f|
+    %li{ :id => f.id }= raw f.content_html
+%ul.categories
+  - category.children.each do |c|
+    %li{ :id => c.id }
+      %h3= c.name
+      = link_to "Permalink", c
+      - if c.children.count > 0 && c.facts.count > 0
+        %p.standin= "#{pluralize(c.facts.count, 'fact')}, #{pluralize(c.children.count, 'category')}"
+      - elsif c.facts.count > 0
+        %p.standin= "#{pluralize(c.facts.count, 'fact')}"
+      - elsif c.children.count > 0
+        %p.standin= "#{pluralize(c.children.count, 'category')}"
+      %div.content
+      %a.hide{ :href => 'javascript: function() {}' } Hide

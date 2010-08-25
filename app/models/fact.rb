@@ -1,10 +1,13 @@
+require 'lib/database_helper'
 require 'rdiscount'
 
 class Fact < ActiveRecord::Base
-  belongs_to :category
+  extend DatabaseHelper
 
+  belongs_to :category
   validates_presence_of :category, :content
 
+  scope :random, order(db_random)
   scope :search, lambda { |query|
     where 'facts.id LIKE ? OR facts.content LIKE ?', "%#{query}%", "%#{query}%"
   }
@@ -14,7 +17,11 @@ class Fact < ActiveRecord::Base
   end
 
   def to_json
-    { :fact => { :id => id, :content => content } }
+    json = { :fact => {
+      :id => id, :category_id => category_id, :content => content
+    } }
+    json[:fact][:category] = category.to_json if category.loaded?
+    json
   end
 end
 

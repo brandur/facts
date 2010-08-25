@@ -1,0 +1,7 @@
+%ul
+  - @facts.each do |fact|
+    %li
+      = raw fact.content_html
+      = "(#{fact.id})"
+      &mdash;
+      = link_to(fact.category.slug, fact.category)

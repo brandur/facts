@@ -5,10 +5,17 @@ class CategoriesController < ApplicationController
   skip_before_filter :verify_authenticity_token
   set_tab :categories
 
+  # GET /categories/search.json
+  def search
+    categories = Category.search(params[:query])
+    categories = categories.includes(:facts) if Boolean.parse(params[:include_facts])
+    render :json => categories.collect{ |c| c.to_json }.to_json
+  end
+
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.top.includes(:children => { :children => [ :children, :facts ] }, :facts => {})
 
     respond_to do |format|
       format.html
@@ -20,13 +27,19 @@ class CategoriesController < ApplicationController
   # GET /categories/1.json
   def show
     if params[:slug]
-      @category = Category.find_by_slug(params[:slug], :include => :facts)
+      @category = Category.find_by_slug(params[:slug], :include => [ :children, :facts ])
     else
-      @category = Category.find(params[:id], :include => :facts)
+      @category = Category.find(params[:id], :include => [ :children, :facts ])
     end
 
     respond_to do |format|
-      format.html
+      format.html do
+        if Boolean.parse(params[:partial])
+          render :partial => 'category', :locals => { :category => @category }
+        else
+          render 'show'
+        end
+      end
       format.json { render :json => @category.to_json }
     end
   end
@@ -109,12 +122,5 @@ class CategoriesController < ApplicationController
         format.json { head :unauthorized }
       end
     end
-  end
-
-  # GET /categories/search.json
-  def search
-    categories = Category.search(params[:query])
-    categories = categories.includes(:facts) if Boolean.parse(params[:include_facts])
-    render :json => categories.collect{ |c| c.to_json }.to_json
   end
 end

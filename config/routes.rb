@@ -10,6 +10,7 @@ Facts::Application.routes.draw do
   match '/categories/search.json', :to => 'categories#search'
   match '/categories/*slug', :to => 'categories#show'
 
+  match '/facts/daily(.:format)', :to => 'facts#daily'
   match '/facts/search.json', :to => 'facts#search'
 
   root :to => "categories#index"

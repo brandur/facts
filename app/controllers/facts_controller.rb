@@ -3,6 +3,18 @@ class FactsController < ApplicationController
   skip_before_filter :verify_authenticity_token
   set_tab :facts
 
+  def daily
+    @facts = Fact.random.includes(:category).limit(15)
+    respond_to do |format|
+      format.html # daily.html.haml
+      format.json { render :json => @facts.collect{ |f| f.to_json }.to_json }
+    end
+  end
+
+  def search
+    render :json => Fact.search(params[:query]).collect{ |f| f.to_json }.to_json
+  end
+
   # GET /facts
   # GET /facts.json
   def index
@@ -10,7 +22,7 @@ class FactsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.haml
-      format.json  { render :json => @facts }
+      format.json { render :json => @facts }
     end
   end
 
@@ -21,7 +33,7 @@ class FactsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.haml
-      format.json  { render :json => @fact }
+      format.json { render :json => @fact }
     end
   end
 
@@ -102,9 +114,5 @@ class FactsController < ApplicationController
         format.json { head :unauthorized }
       end
     end
-  end
-
-  def search
-    render :json => Fact.search(params[:query])
   end
 end
