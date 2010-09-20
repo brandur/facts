@@ -12,6 +12,9 @@ Facts::Application.routes.draw do
   match '/facts/daily(.:format)', :to => 'facts#daily'
   match '/facts/search.json', :to => 'facts#search'
 
+  # Bistro Car
+  match '/javascripts/bundle/:bundle.js', :to => 'bistro_car/bundle#show'
+
   match '/*slug', :to => 'categories#show'
 
   root :to => "categories#index"
