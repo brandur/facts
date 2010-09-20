@@ -5,22 +5,4 @@
     - @category.ancestors.each do |p|
       %li= link_to p.name, category_path(p)
 
-= render :partial => 'facts/form', :locals => { :fact => Fact.new(:category_id => @category.id) }
-= render :partial => 'form', :locals => { :category => Category.new(:category_id => @category.id) }
-
-%ul
-  - @category.facts.each do |f|
-    %li= raw f.content_html
-
-- @category.children.each do |c|
-  %h2= c.name
-
-  %ul
-    - c.facts.each do |f|
-      %li
-        = raw f.content_html
-        = link_to 'Permalink', fact_path(f)
-
-= link_to 'Edit', edit_category_path(@category)
-\|
-= link_to 'Back', categories_path
+= render :partial => 'category', :locals => { :category => @category }

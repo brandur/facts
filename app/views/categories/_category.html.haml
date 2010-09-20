@@ -1,16 +1,32 @@
-%ul
+- if authorized?(category)
+  .actions_wrapper
+    %a.actions_expand.tool{ :href => 'javascript:' } New Fact/Category
+    %ul.actions.hide
+      .clear
+      %li
+        .new_fact_form
+          = render :partial => 'facts/form', :locals => { :fact => Fact.new(:category_id => category.id) }
+      %li
+        .new_category_form
+          = render :partial => 'form', :locals => { :category => Category.new(:category_id => category.id) }
+      %li
+        %a.cancel{ :href => 'javascript:' } Cancel
+  .clear
+
+%ul.facts
   - category.facts.each do |f|
-    %li{ :id => f.id }= raw f.content_html
+    %li.fact{ :id => f.id }
+      = append_to_html raw(f.content_html), " #{link_to("Permalink", f, :class => [ :tool ])}"
 %ul.categories
   - category.children.each do |c|
-    %li{ :id => c.id }
+    %li.category{ :id => c.id }
       %h3= c.name
-      = link_to "Permalink", c
+      = link_to "Permalink", c, :class => [ :tool, :permalink ]
       - if c.children.count > 0 && c.facts.count > 0
         %p.standin= "#{pluralize(c.facts.count, 'fact')}, #{pluralize(c.children.count, 'category')}"
       - elsif c.facts.count > 0
         %p.standin= "#{pluralize(c.facts.count, 'fact')}"
       - elsif c.children.count > 0
         %p.standin= "#{pluralize(c.children.count, 'category')}"
-      %div.content
-      %a.hide{ :href => 'javascript: function() {}' } Hide
+      .content
+      %a.hide_content.hide{ :href => 'javascript:' } Hide

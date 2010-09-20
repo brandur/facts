@@ -8,10 +8,11 @@ Facts::Application.routes.draw do
   match '/user_sessions(.:format)', :to => 'user_sessions#destroy', :via => :delete
 
   match '/categories/search.json', :to => 'categories#search'
-  match '/categories/*slug', :to => 'categories#show'
 
   match '/facts/daily(.:format)', :to => 'facts#daily'
   match '/facts/search.json', :to => 'facts#search'
+
+  match '/*slug', :to => 'categories#show'
 
   root :to => "categories#index"
 

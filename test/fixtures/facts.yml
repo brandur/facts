@@ -17,7 +17,7 @@ lake_agassiz_one:
   category: lake_agassiz
 
 lake_agassiz_two:
-  content: Its area was greater than all of the modern Great Lakes combined (440 000 <math>km^2</math>, and it held more water than all lakes in the world today.
+  content: Its area was greater than all of the modern Great Lakes combined (440 000 <math>km^2</math>), and it held more water than all lakes in the world today.
   category: lake_agassiz
 
 lake_agassiz_three:
@@ -163,4 +163,8 @@ kola_superdeep_borehole_two:
 kola_superdeep_borehole_three:
   content: Temperatures at 15 000 m would have been a project 300 degrees C, at which the drill bit would no longer work.
   category: kola_superdeep_borehole
+
+oil_one:
+  content: One liter is equivalent to about five weeks hard human labour.
+  category: oil
 

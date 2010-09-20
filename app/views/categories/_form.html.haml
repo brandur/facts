@@ -1,19 +1,20 @@
 - # Some manual intervention is necessary to ensure that we don't use a slug 
 - # in the edit path
 - url = category.new_record? ? categories_path : category_path(category, false)
-= semantic_form_for category, :url => url do |f|
-  -if category.errors.any?
-    #errorExplanation
-      %h2= "#{pluralize(category.errors.count, "error")} prohibited this category from being saved:"
-      %ul
-        - category.errors.full_messages.each do |msg|
-          %li= msg
+%ul.form_inputs
+  = semantic_form_for category, :url => url do |f|
+    -if category.errors.any?
+      #errorExplanation
+        %h2= "#{pluralize(category.errors.count, "error")} prohibited this category from being saved:"
+        %ul
+          - category.errors.full_messages.each do |msg|
+            %li= msg
 
-  = f.input :name, :hint => 'Category name. Combined with parent names to create a permalink.'
-  - if !category.parent
-    = f.input :parent
-  - else
-    = f.input :category_id, :value => category.parent.id, :as => :hidden
+    = f.input :name, :hint => 'Category name. Combined with parent names to create a permalink.'
+    - if !category.parent
+      = f.input :parent
+    - else
+      = f.input :category_id, :value => category.parent.id, :as => :hidden
 
-  .actions
-    = f.submit 'Save'
+    .actions
+      = f.submit 'Save'
