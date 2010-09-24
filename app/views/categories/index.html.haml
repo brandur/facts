@@ -3,4 +3,4 @@
     - @categories.each do |category|
       %li{ :class => category == @categories.last ? 'category last' : 'category' }
         %h2= category.name
-        = render :partial => 'category', :locals => { :category => category }
+        = render :partial => 'category', :locals => { :category => category, :can_hide => false }

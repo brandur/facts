@@ -7,13 +7,13 @@ $('p.standin').live 'click', ->
     (data) ->
       item.children('.standin').slideUp('fast')
       item.children('.content').html(data)
-      item.children('.content,.hide_content').hide().slideDown 'fast', ->
+      item.children('.content').hide().slideDown 'fast', ->
         item.children('.content').css('display', '');
 
 # Hides a category's full content and shows its standin token instead.
 $('a.hide_content').live 'click', ->
-  item = $(this).parent()
-  item.children('.content,.hide_content').slideUp('fast')
+  item = $(this).parent().parent()
+  item.children('.content').slideUp('fast')
   item.children('.standin').slideDown 'fast', ->
     item.children('.standin').css('display', '')
 

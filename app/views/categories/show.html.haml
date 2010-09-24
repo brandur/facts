@@ -5,4 +5,8 @@
     - @category.ancestors.each do |p|
       %li= link_to p.name, category_path(p)
 
-= render :partial => 'category', :locals => { :category => @category }
+#wrapper
+  %ul.categories#root
+    %li.category.last
+      %h2= @category.name
+      = render :partial => 'category', :locals => { :category => @category }

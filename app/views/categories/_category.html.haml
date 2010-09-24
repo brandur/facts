@@ -1,7 +1,7 @@
-= link_to "Permalink", category, :class => [ :tool, :permalink ]
+= link_to "Permalink", category, :class => [ :tool, :category_tool ]
 - if authorized?(category)
   .actions_wrapper
-    %a.actions_expand.tool{ :href => 'javascript:' } New Fact/Category
+    %a.actions_expand.tool.category_tool{ :href => 'javascript:' } New Fact/Category
     %ul.actions.hide
       .clear
       %li
@@ -12,6 +12,8 @@
           = render :partial => 'form', :locals => { :category => Category.new(:category_id => category.id) }
       %li
         %a.cancel{ :href => 'javascript:' } Cancel
+- if !defined?(can_hide) || can_hide
+  %a.hide_content.tool.category_tool{ :href => 'javascript:' } Hide
 .clear
 
 - if category.facts.count > 0
@@ -33,4 +35,3 @@
             %p.standin= "#{pluralize(c.children.count, 'category')} hidden"
           .content
           .clear
-          %a.hide_content.hide{ :href => 'javascript:' } Hide
