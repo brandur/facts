@@ -1,61 +1,114 @@
+body
+  background: #4477aa
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
+  font-size: 11pt
+
 .clear
   clear: both
 
 .hide
   display: none
 
-.standin
-  clear: both
-  cursor: pointer
+#wrapper
+  background: #fff
+  margin: 0 auto
+  width: 90%
 
-a.tool, a.tool:visited, a.tool:hover
-  color: #fff
-  background: #6699bb
-  border: 1px solid #40404c
-  cursor: pointer
-  font: normal 8px "Trebuchet MS", sans-serif
-  margin-left: 2px
-  margin-right: 2px
-  padding: 0 3px
-  text-align: center
-  text-decoration: none
-  text-transform: uppercase
-  -moz-box-shadow: rgba(0,0,0,.42) 1px 1px 4px
-  -webkit-box-shadow: rgba(0,0,0,.42) 1px 1px 4px
-  -moz-border-radius: 5px
-  -webkit-border-radius: 5px
-  -webkit-transition: background-color .2s ease
-  -webkit-box-reflect: below 1px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.65, rgba(255,255,255, .01)), to(rgba(255,255,255, .2)))
+  a.tool, a.tool:visited, a.tool:hover
+    color: #fff
+    background: #6699bb
+    border: 1px solid #40404c
+    cursor: pointer
+    font: normal 8px "Trebuchet MS", sans-serif
+    margin-left: 2px
+    margin-right: 2px
+    padding: 0 3px
+    text-align: center
+    text-decoration: none
+    text-transform: uppercase
+    -moz-box-shadow: rgba(0,0,0,.42) 1px 1px 4px
+    -webkit-box-shadow: rgba(0,0,0,.42) 1px 1px 4px
+    -moz-border-radius: 5px
+    -webkit-border-radius: 5px
+    -webkit-transition: background-color .2s ease
+    -webkit-box-reflect: below 1px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.65, rgba(255,255,255, .01)), to(rgba(255,255,255, .2)))
 
-a.tool:hover
-  background: #336699
-  border: 1px solid #ccc
+  a.tool:hover
+    background: #336699
+    border: 1px solid #ccc
 
-ul.actions, ul.categories, ul.facts
-  padding: 0 0 0 30px
+  $common_border: 1px solid #ccc
 
-ul.actions
-  list-style-type: none
+  div.categories_wrapper
+    border-top: $common_border
 
-ul.categories
-  margin: 0
-  list-style-type: none
+  ul.actions, ul.categories, ul.facts
+    padding: 0 0 0 30px
 
-  .category h2, .category h3
-    margin: 14px 0 0 0
+  ul.actions
+    list-style-type: none
+
+  ul#root
+    border-left: 0
+    margin: 0
+
+  ul.categories
+    border-left: $common_border
+    margin: 0 0 0 34px
     padding: 0
-    height: 26px
-    float: left
-    vertical-align: bottom
+    list-style-type: none
 
-  .category a.actions_expand, .category a.permalink
-    margin-top: 20px
-    float: left
+    li.category
+      border-bottom: $common_border
+      overflow: hidden
+      padding: 0
+      margin: 0
 
-  .category a.permalink
-    margin-left: 10px !important
+      h2, h3
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
+        font-weight: 200
+        margin: 0
+        padding: 0 6px
+        float: left
 
-ul.form_inputs
-  list-style-type: none
-  padding: 0
+      h2
+        font-size: 34px
+        height: 44px
+
+      h3
+        margin: 5px 0 0 0 
+        font-size: 24px
+        height: 38px
+
+      a.actions_expand, a.permalink
+        margin-top: 20px
+        float: left
+
+      a.permalink
+        margin-left: 10px !important
+
+      p.standin
+        color: #9a9a9a
+        float: left
+        cursor: pointer
+        margin: 15px 0 0 0
+
+    .last
+      border: 0 !important
+
+  ul.facts
+    padding: 0
+    list-style-type: none
+    
+    li.fact
+      background: #efefef
+      border-top: $common_border
+      overflow: hidden
+      
+      p
+        margin: 10px
+
+  ul.form_inputs
+    list-style-type: none
+    padding: 0
 

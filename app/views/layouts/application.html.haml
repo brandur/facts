@@ -2,31 +2,30 @@
 %html
   %head
     %title Facts
-    = stylesheet_link_tag :all
+    = stylesheet_link_tag 'application'
     = # javascript_include_tag :defaults
     = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js', 'rails'
     = coffee_script_bundle
     = csrf_meta_tag
     = yield :head
   %body
-    #content
-      = tabs_tag do |tab|
-        = tab.categories 'Categories', categories_path
-        = tab.facts      'Facts',      facts_path
-      %p
-        - if current_user
-          Logged in as 
-          = link_to("#{current_user.login}.", current_user)
-          = button_to('Sign out.', user_sessions_url, :method => :delete)
-        - else
-          Not logged in.
-          = link_to('Sign in.', new_user_session_url)
-      - flash.each do |name, msg|
-        = content_tag :div, msg, :id => "flash_#{name}", :class => 'flash'
-        - content_for(:javascript) do
-          :javascript
-            window.setTimeout('$("#flash_#{name}").slideUp(500)', 2000);
+    = tabs_tag do |tab|
+      = tab.categories 'Categories', categories_path
+      = tab.facts      'Facts',      facts_path
+    %p
+      - if current_user
+        Logged in as 
+        = link_to("#{current_user.login}.", current_user)
+        = button_to('Sign out.', user_sessions_url, :method => :delete)
+      - else
+        Not logged in.
+        = link_to('Sign in.', new_user_session_url)
+    - flash.each do |name, msg|
+      = content_tag :div, msg, :id => "flash_#{name}", :class => 'flash'
+      - content_for(:javascript) do
+        :javascript
+          window.setTimeout('$("#flash_#{name}").slideUp(500)', 2000);
 
-      = yield
-    - # Yield is at the bottom so we can add its anywhere above
-    = yield :javascript
+    = yield
+  - # Yield is at the bottom so we can add its anywhere above
+  = yield :javascript
