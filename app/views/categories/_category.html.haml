@@ -1,6 +1,6 @@
-= link_to "Permalink", category, :class => [ :tool, :category_tool ]
-- if authorized?(category)
-  .actions_wrapper
+.category_tools
+  = link_to "Permalink", category, :class => [ :tool, :category_tool ]
+  - if authorized?(category)
     %a.actions_expand.tool.category_tool{ :href => 'javascript:' } New Fact/Category
     %ul.actions.hide
       .clear
@@ -12,26 +12,29 @@
           = render :partial => 'form', :locals => { :category => Category.new(:category_id => category.id) }
       %li
         %a.cancel{ :href => 'javascript:' } Cancel
-- if !defined?(can_hide) || can_hide
-  %a.hide_content.tool.category_tool{ :href => 'javascript:' } Hide
-.clear
+  - if !defined?(can_hide) || can_hide
+    %a.hide_content.tool.category_tool{ :href => 'javascript:' } Hide
+  .clear
 
 - if category.facts.count > 0
   %ul.facts
     - category.facts.each do |f|
       %li.fact{ :id => f.id }
-        = append_to_html raw(f.content_html), " #{link_to("Permalink", f, :class => [ :tool ])}"
+        = append_to_html raw(f.content_html), " #{link_to("Permalink", f, :class => [ :tool, :fact_tool ])}"
 - if category.children.count > 0
   .categories_wrapper
     %ul.categories
       - category.children.each do |c|
-        %li{ :id => c.id, :class => c == category.children.last ? 'category last' : 'category' }
+        - classes = 'category'
+        - classes += ' last' if c == category.children.last
+        - classes += ' standin' if c.children.count > 0 || c.facts.count > 0
+        %li{ :id => c.id, :class => classes }
           %h3= c.name
           - if c.children.count > 0 && c.facts.count > 0
-            %p.standin= "#{pluralize(c.facts.count, 'fact')}, #{pluralize(c.children.count, 'category')} hidden"
+            %p.hidden_info= "#{pluralize(c.facts.count, 'fact')}, #{pluralize(c.children.count, 'category')} hidden"
           - elsif c.facts.count > 0
-            %p.standin= "#{pluralize(c.facts.count, 'fact')} hidden"
+            %p.hidden_info= "#{pluralize(c.facts.count, 'fact')} hidden"
           - elsif c.children.count > 0
-            %p.standin= "#{pluralize(c.children.count, 'category')} hidden"
+            %p.hidden_info= "#{pluralize(c.children.count, 'category')} hidden"
           .content
           .clear
