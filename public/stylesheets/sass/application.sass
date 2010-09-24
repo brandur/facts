@@ -1,5 +1,8 @@
+$text_color: #000
+
 body
   background: #4477aa
+  color: $text_color
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
   font-size: 11pt
 
@@ -15,27 +18,12 @@ body
   width: 90%
 
   a.tool, a.tool:visited, a.tool:hover
-    color: #fff
-    background: #6699bb
-    border: 1px solid #40404c
-    cursor: pointer
-    font: normal 8px "Trebuchet MS", sans-serif
-    margin-left: 2px
-    margin-right: 2px
-    padding: 0 3px
-    text-align: center
+    color: $text_color
     text-decoration: none
-    text-transform: uppercase
-    -moz-box-shadow: rgba(0,0,0,.42) 1px 1px 4px
-    -webkit-box-shadow: rgba(0,0,0,.42) 1px 1px 4px
-    -moz-border-radius: 5px
-    -webkit-border-radius: 5px
-    -webkit-transition: background-color .2s ease
-    -webkit-box-reflect: below 1px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.65, rgba(255,255,255, .01)), to(rgba(255,255,255, .2)))
+    margin: 0 0 0 8px
 
   a.tool:hover
-    background: #336699
-    border: 1px solid #ccc
+    text-decoration: underline
 
   $common_border: 1px solid #ccc
 
@@ -59,30 +47,32 @@ body
     list-style-type: none
 
     li.category
+      color: #9a9a9a
       border-bottom: $common_border
       overflow: hidden
-      padding: 0
       margin: 0
 
+      &:hover
+        color: $text_color
+
       h2, h3
+        color: $text_color
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
         font-weight: 200
-        margin: 0
+        margin: 8px 0 0 0
         padding: 0 6px
-        float: left
 
       h2
         font-size: 34px
-        margin: 8px 0
 
       h3
-        margin: 8px 0
         font-size: 24px
 
-      a.category_tool
-        margin-top: 20px
-        float: left
-        display: none
+      .standin
+        cursor: pointer
+
+      .standin_header
+        color: #6a6a6a
 
       a.fact_tool
         display: none
@@ -90,15 +80,17 @@ body
       a.permalink
         margin-left: 10px !important
 
-      .standin
-        color: #6a6a6a
-        cursor: pointer
+      .meta
+        font-size: 8pt
+        margin: 0 0 8px 0
+        padding: 0 6px
 
-      p.hidden_info
-        float: left
-        cursor: pointer
-        color: #9a9a9a
-        margin: 14px 0 0 0
+        a.category_tool
+          margin-top: 20px
+          display: none
+
+        span.count
+          float: left
 
     .last
       border: 0 !important
@@ -109,6 +101,7 @@ body
     
     li.fact
       background: #f3f3f3
+      color: $text_color
       border-top: $common_border
       overflow: hidden
       

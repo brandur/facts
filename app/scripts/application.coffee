@@ -5,8 +5,8 @@ $('.standin').live 'click', ->
   $.get '/categories/' + item.attr('id'), 
     { 'partial': true }, 
     (data) ->
-      item.children('.hidden_info').hide()
       item.removeClass('standin')
+      item.find('h3:first').removeClass('standin_header')
       item.children('.content').html(data)
       item.children('.content').hide().slideDown 'fast', ->
         item.children('.content').css('display', '');
@@ -14,9 +14,10 @@ $('.standin').live 'click', ->
 # Hides a category's full content and shows its standin token instead.
 $('a.hide_content').live 'click', ->
   item = $(this).parents('.category:first')
+  item.find('.category_tools:first').children('.category_tool').hide()
   item.children('.content').slideUp('fast')
   item.addClass('standin')
-  item.children('.hidden_info').show()
+  item.find('h3:first').addClass('standin_header')
 
 # Expands a category's actions (e.g. "new child category" or "new fact")
 $('a.actions_expand').live 'click', ->
@@ -29,6 +30,7 @@ $('a.cancel').live 'click', ->
   item.find('.actions:visible').slideUp('fast')
  
 $('li.category').live 'mouseover mouseout', (event) ->
+  return if $(this).hasClass('standin')
   if (event.type == 'mouseover')
     $(this).find('.category_tools:first').children('.category_tool').show()
   else
