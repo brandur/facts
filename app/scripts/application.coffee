@@ -2,22 +2,21 @@
 # for that category is clicked.
 $('.standin').live 'click', ->
   item = $(this)
-  item.removeClass('standin')
+  item.children('.hidden_info').hide()
   $.get '/categories/' + item.attr('id'), 
     { 'partial': true }, 
     (data) ->
-      item.children('.hidden_info').slideUp('fast')
+      item.removeClass('standin')
       item.children('.content').html(data)
       item.children('.content').hide().slideDown 'fast', ->
         item.children('.content').css('display', '');
 
 # Hides a category's full content and shows its standin token instead.
 $('a.hide_content').live 'click', ->
-  item = $(this).parents('.category')
-  item.addClass('standin')
+  item = $(this).parents('.category:first')
   item.children('.content').slideUp('fast')
-  item.children('.hidden_info').slideDown 'fast', ->
-    item.children('.hidden_info').css('display', '')
+  item.addClass('standin')
+  item.children('.hidden_info').show()
 
 # Expands a category's actions (e.g. "new child category" or "new fact")
 $('a.actions_expand').live 'click', ->
@@ -26,7 +25,7 @@ $('a.actions_expand').live 'click', ->
 
 # Hides a category's actions
 $('a.cancel').live 'click', ->
-  item = $(this).parents('.category_tools')
+  item = $(this).parents('.category_tools:first')
   item.find('.actions:visible').slideUp('fast')
  
 $('li.category').live 'mouseover mouseout', (event) ->
