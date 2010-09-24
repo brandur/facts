@@ -2,10 +2,10 @@
 # for that category is clicked.
 $('.standin').live 'click', ->
   item = $(this)
-  item.children('.hidden_info').hide()
   $.get '/categories/' + item.attr('id'), 
     { 'partial': true }, 
     (data) ->
+      item.children('.hidden_info').hide()
       item.removeClass('standin')
       item.children('.content').html(data)
       item.children('.content').hide().slideDown 'fast', ->
