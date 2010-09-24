@@ -30,11 +30,6 @@
         - classes += ' standin' if c.children.count > 0 || c.facts.count > 0
         %li{ :id => c.id, :class => classes }
           %h3= c.name
-          - if c.children.count > 0 && c.facts.count > 0
-            %p.hidden_info= "#{pluralize(c.facts.count, 'fact')}, #{pluralize(c.children.count, 'category')} hidden"
-          - elsif c.facts.count > 0
-            %p.hidden_info= "#{pluralize(c.facts.count, 'fact')} hidden"
-          - elsif c.children.count > 0
-            %p.hidden_info= "#{pluralize(c.children.count, 'category')} hidden"
+          %p.hidden_info= count_str(c)
           .content
           .clear
