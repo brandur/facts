@@ -23,6 +23,7 @@ class UserSessionsController < ApplicationController
         format.html { redirect_back_or_default(user_url(@user_session.user), :notice => 'Login successful!') }
         format.json { render :json => @user_session, :status => :created, :location => @user_session }
       else
+        flash.now[:notice] = 'Incorrect username or password.'
         format.html { render :action => "new" }
         format.json { render :json => @user_session.errors, :status => :unprocessable_entity }
       end

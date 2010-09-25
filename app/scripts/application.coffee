@@ -42,4 +42,17 @@ $('li.fact').live 'mouseover mouseout', (event) ->
   else
     $(this).find('.fact_tool').hide()
 
-#$().ready ->
+$('input.informative').live 'focus', ->
+  $(this).removeClass('informative')
+  if ($(this).attr('value') == 'Login' || ($(this).attr('value') == 'Password'))
+      $(this).attr('value', '')
+
+$(document).ready ->
+    if ($('input#user_session_login').attr('value') == '')
+        $('input#user_session_login').attr('value', 'Login')
+    else
+        $('input#user_session_login').removeClass('informative')
+    if ($('input#user_session_password').attr('value') == '')
+        $('input#user_session_password').attr('value', 'Password')
+    else
+        $('input#user_session_password').removeClass('informative')

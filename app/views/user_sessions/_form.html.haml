@@ -1,7 +1,15 @@
-= semantic_form_for @user_session, :url => user_sessions_path do |f|
-  = f.input :login
-  = f.input :password
-  = f.input :remember_me, :as => :boolean
-
-  .actions
-    = f.submit 'Login'
+#login
+  = form_for @user_session do |u|
+    %fieldset.inputs
+      %ol
+        %li
+          %label{ :for => 'user_session_login', :class => 'hide' } Login
+          %input#user_session_login.informative{ :type => 'text', :name => 'user_session[login]' }
+        %li
+          %label{ :for => 'user_session_password', :class => 'hide' } Password
+          %input#user_session_password.informative{ :type => 'password', :name => 'user_session[password]' }
+        %li
+          %input#user_session_remember_me{ :type => 'checkbox', :name => 'user_session[remember_me]' }
+          %label{ :for => 'user_session_remember_me', :style => 'margin: 3px 0 0 0;' } Remember me
+    .actions
+      %input.user_session_commit{ :type => 'submit', :name => 'commit', :value => 'Login' }
