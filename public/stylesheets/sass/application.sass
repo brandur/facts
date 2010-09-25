@@ -74,9 +74,6 @@ body
       .standin_header
         color: #6a6a6a
 
-      a.fact_tool
-        display: none
-
       a.permalink
         margin-left: 10px !important
 
@@ -101,15 +98,28 @@ body
     
     li.fact
       background: #f3f3f3
-      color: $text_color
+      color: #9a9a9a
       border-top: $common_border
       overflow: hidden
+      padding: 14px 20px
       
       &:hover
         background: #ddeeff
 
+      .meta
+        font-size: 8pt
+        margin: 0
+        padding: 0
+
+        a.fact_tool
+          display: none
+
+        span.age
+          float: left
+
       p
-        margin: 10px
+        color: $text_color
+        margin: 0 0 4px 0
 
   ul.form_inputs
     list-style-type: none
