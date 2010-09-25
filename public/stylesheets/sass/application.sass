@@ -1,10 +1,22 @@
 $link_color: #336699
 $text_color: #000
 
+$max_width: 900px
+
+@mixin body_element
+  margin-left: auto
+  margin-right: auto
+  width: 90%
+  max-width: $max_width
+
+@mixin shadow($size)
+  -moz-box-shadow: 0 0 $size #000
+  -webkit-box-shadow: 0 0 $size #000
+  box-shadow: 0 0 $size #000
+
 a
   color: $link_color
   text-decoration: none
-  margin: 0 0 0 8px
 
   &:hover
     text-decoration: underline
@@ -14,6 +26,8 @@ body
   color: $text_color
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
   font-size: 11pt
+  margin: 0
+  padding: 0
 
 .clear
   clear: both
@@ -21,14 +35,66 @@ body
 .hide
   display: none
 
+#header_wrapper
+  height: 45px
+  overflow: hidden
+
+#header
+  color: #fff
+  height: 40px
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.08, rgb(76,68,90)), color-stop(0.61, rgb(0,0,0)))
+  background: -moz-linear-gradient(center top, rgb(76,68,90) 8%, rgb(0,0,0) 61%) 
+  @include shadow(5px)
+
+  #header_content
+    font-size: 9pt
+    @include body_element
+
+    h1
+      font-size: 34px
+      font-weight: 100
+      text-transform: lowercase
+      float: left
+      margin: 0
+      padding: 0 12px 0 0
+
+    #nav
+
+      ul
+        list-style-type: none
+        margin: 0
+        padding: 0
+
+        li, li.current
+          line-height: 38px
+          float: left
+
+          a, span
+            display: block
+            margin: 0
+            padding: 0 14px
+
+          &:hover
+            background: #000
+
+        li.current
+          background: #000
+          font-weight: bold
+
+    #login_status
+      float: right
+
+      p
+        line-height: 38px
+        margin: 0
+        padding: 0
+
 #wrapper
   background: #fff
-  margin: 0 auto
-  width: 90%
-  max-width: 900px
-  -moz-box-shadow: 0 0 10px #000
-  -webkit-box-shadow: 0 0 10px #000
-  box-shadow: 0 0 10px #000
+  @include body_element
+  @include shadow(10px)
+  margin-top: 30px
+  margin-bottom: 30px
 
   $common_border: 1px solid #ccc
 
@@ -90,6 +156,7 @@ body
         a.category_tool
           margin-top: 20px
           display: none
+          margin: 0 0 0 8px
           padding: 0 0 0 16px
 
         a.tool_hide
@@ -128,6 +195,7 @@ body
 
         a.fact_tool
           display: none
+          margin: 0 0 0 8px
           padding: 0 0 0 16px
 
         a.tool_permalink

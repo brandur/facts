@@ -4,7 +4,7 @@
       %li.fact{ :id => f.id }
         = raw(f.content_html)
         .meta
-          %span.age= "#{distance_of_time_in_words(f.created_at, Time.now)} ago"
+          %span.age= "#{distance_of_time_in_words(f.created_at, Time.now)} ago by #{category.user.login}"
           = link_to "Permalink", f, :class => [ :tool_permalink, :tool, :fact_tool ]
           .clear
 - if category.children.count > 0

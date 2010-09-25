@@ -3,24 +3,28 @@
   %head
     %title Facts
     = stylesheet_link_tag 'application'
-    = # javascript_include_tag :defaults
     = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js', 'rails'
     = #coffee_script_bundle
     = coffee_script_bundle :mode => :inline
     = csrf_meta_tag
     = yield :head
   %body
-    = tabs_tag do |tab|
-      = tab.categories 'Categories', categories_path
-      = tab.facts      'Facts',      facts_path
-    %p
-      - if current_user
-        Logged in as 
-        = link_to("#{current_user.login}.", current_user)
-        = button_to('Sign out.', user_sessions_url, :method => :delete)
-      - else
-        Not logged in.
-        = link_to('Sign in.', new_user_session_url)
+    - # header_wrapper is required to constrain the horizontal overflow of 
+    - # box-shadow. Without it, we get a horizontal scrollbar.
+    #header_wrapper
+      #header
+        #header_content
+          %h1 Facts!
+          #nav
+            = tabs_tag do |tab|
+              = tab.categories 'Categories', categories_path
+              = tab.facts      'Facts',      url_for(:controller => :facts, :action => :daily)
+          #login_status
+            - if current_user
+              %p= raw("Logged in as #{link_to("#{current_user.login}", current_user)}. #{link_to('Sign out', user_sessions_url, :method => :delete)}.")
+            - else
+              %p= raw("Not logged in. #{link_to('Sign in', new_user_session_url)}.")
+          .clear
     - flash.each do |name, msg|
       = content_tag :div, msg, :id => "flash_#{name}", :class => 'flash'
       - content_for(:javascript) do
