@@ -4,4 +4,7 @@
   %ul.categories#root
     %li.category.root_category.last
       %h2= @category.name
+      .meta
+        %span.count= count_str(@category)
+        = render :partial => 'tools', :locals => { :category => @category, :can_hide => false }
       = render :partial => 'category', :locals => { :category => @category }
