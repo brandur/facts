@@ -28,8 +28,10 @@
           .clear
     - flash.each do |name, msg|
       .flash{ :id => "flash_#{name}" }
-        .content
-          = msg
+        - if msg.downcase.include? 'success'
+          .content_good= msg
+        - else 
+          .content= msg
       - content_for(:javascript) do
         :javascript
           window.setTimeout('$("#flash_#{name}").slideUp(500)', 2000);

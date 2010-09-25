@@ -4,12 +4,12 @@
       %ol
         %li
           %label{ :for => 'user_session_login', :class => 'hide' } Login
-          %input#user_session_login.informative{ :type => 'text', :name => 'user_session[login]' }
+          %input#user_session_login.informative{ :type => 'text', :name => 'user_session[login]', :tabindex => 1 }
         %li
           %label{ :for => 'user_session_password', :class => 'hide' } Password
-          %input#user_session_password.informative{ :type => 'password', :name => 'user_session[password]' }
+          %input#user_session_password.informative{ :type => 'password', :name => 'user_session[password]', :tabindex => 2 }
         %li
-          %input#user_session_remember_me{ :type => 'checkbox', :name => 'user_session[remember_me]' }
+          %input#user_session_remember_me{ :type => 'checkbox', :name => 'user_session[remember_me]', :tabindex => 3 }
           %label{ :for => 'user_session_remember_me', :style => 'margin: 3px 0 0 0;' } Remember me
     .actions
-      %input.user_session_commit{ :type => 'submit', :name => 'commit', :value => 'Login' }
+      %input.user_session_commit{ :type => 'submit', :name => 'commit', :value => 'Login', :tabindex => 4 }
