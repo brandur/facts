@@ -7,7 +7,7 @@ module ApplicationHelper
 
   def category_path(category, use_slug = true)
     if use_slug
-      "#{category.slug}"
+      "/#{category.slug}"
     else
       super.category_path(category)
     end

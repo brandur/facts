@@ -1,5 +1,6 @@
 $link_color: #336699
 $text_color: #000
+$meta_text_color: #9a9a9a
 
 $max_width: 900px
 
@@ -22,7 +23,7 @@ a
     text-decoration: underline
 
 body
-  background: #4477aa url('/images/tile.png') repeat
+  background: #99ccdd url('/images/tile.png') repeat
   color: $text_color
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
   font-size: 11pt
@@ -95,11 +96,36 @@ body
   @include shadow(10px)
   margin-top: 30px
   margin-bottom: 30px
+  overflow: hidden
 
   $common_border: 1px solid #ccc
 
   div.categories_wrapper
     border-top: $common_border
+
+  div#fact
+    background: #f3f3f3
+    font-size: 18pt
+    font-weight: 200
+    margin: 18px
+    padding: 18px
+
+    &:hover
+      background: #ddeeff
+
+    p
+      margin: 0 0 8px 0
+
+    .meta
+      color: $meta_text_color
+      font-size: 10pt
+
+  p.ancestors
+    font-size: 16px
+    font-weight: 200
+    margin: 26px 26px 0 26px
+    padding: 0 0 0 6px
+    overflow: hidden
 
   ul.actions, ul.categories, ul.facts
     padding: 0 0 0 30px
@@ -118,7 +144,7 @@ body
     list-style-type: none
 
     li.category
-      color: #9a9a9a
+      color: $meta_text_color
       border-bottom: $common_border
       overflow: hidden
       margin: 0
@@ -171,6 +197,9 @@ body
         span.count
           float: left
 
+    li.root_category
+      padding: 10px 26px 22px 26px
+
     .last
       border: 0 !important
 
@@ -180,7 +209,7 @@ body
     
     li.fact
       background: #f3f3f3
-      color: #9a9a9a
+      color: $meta_text_color
       border-top: $common_border
       overflow: hidden
       padding: 14px 18px

@@ -1,7 +1,7 @@
 #wrapper
   %ul.categories#root
     - @categories.each do |category|
-      %li{ :class => category == @categories.last ? 'category last' : 'category' }
+      %li{ :class => category == @categories.last ? 'category root_category last' : 'category root_category' }
         %h2= category.name
         .meta
           %span.count= count_str(category)

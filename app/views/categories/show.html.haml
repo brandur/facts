@@ -1,10 +1,7 @@
-- if @category.ancestors.count > 0
-  %ul
-    - @category.ancestors.each do |p|
-      %li= link_to p.name, category_path(p)
-
 #wrapper
+  - if @category.ancestors.count > 0
+    %p.ancestors= raw @category.ancestors.reverse.collect{ |c| link_to c.name, category_path(c) }.push('').join(' / ')
   %ul.categories#root
-    %li.category.last
+    %li.category.root_category.last
       %h2= @category.name
       = render :partial => 'category', :locals => { :category => @category }
