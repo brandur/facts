@@ -1,5 +1,3 @@
-%h1= @category.name
-
 - if @category.ancestors.count > 0
   %ul
     - @category.ancestors.each do |p|
