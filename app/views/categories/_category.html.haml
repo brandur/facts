@@ -5,7 +5,7 @@
         = raw(f.content_html)
         .meta
           %span.age= "#{distance_of_time_in_words(f.created_at, Time.now)} ago"
-          = link_to "Permalink", f, :class => [ :tool, :fact_tool ]
+          = link_to "Permalink", f, :class => [ :tool_permalink, :tool, :fact_tool ]
           .clear
 - if category.children.count > 0
   .categories_wrapper

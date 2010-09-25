@@ -1,7 +1,16 @@
+$link_color: #336699
 $text_color: #000
 
+a
+  color: $link_color
+  text-decoration: none
+  margin: 0 0 0 8px
+
+  &:hover
+    text-decoration: underline
+
 body
-  background: #4477aa
+  background: #4477aa url('/images/tile.png') repeat
   color: $text_color
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
   font-size: 11pt
@@ -17,14 +26,9 @@ body
   margin: 0 auto
   width: 90%
   max-width: 900px
-
-  a.tool, a.tool:visited, a.tool:hover
-    color: $text_color
-    text-decoration: none
-    margin: 0 0 0 8px
-
-  a.tool:hover
-    text-decoration: underline
+  -moz-box-shadow: 0 0 10px #000
+  -webkit-box-shadow: 0 0 10px #000
+  box-shadow: 0 0 10px #000
 
   $common_border: 1px solid #ccc
 
@@ -86,6 +90,16 @@ body
         a.category_tool
           margin-top: 20px
           display: none
+          padding: 0 0 0 16px
+
+        a.tool_hide
+          background: transparent url('/images/tool_hide.png') no-repeat scroll 0 1px
+
+        a.tool_new
+          background: transparent url('/images/tool_new.png') no-repeat scroll 0 1px
+
+        a.tool_permalink
+          background: transparent url('/images/tool_permalink.png') no-repeat scroll 0 1px
 
         span.count
           float: left
@@ -114,6 +128,10 @@ body
 
         a.fact_tool
           display: none
+          padding: 0 0 0 16px
+
+        a.tool_permalink
+          background: transparent url('/images/tool_permalink.png') no-repeat scroll 0 1px
 
         span.age
           float: left
