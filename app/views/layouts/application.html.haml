@@ -14,7 +14,8 @@
     #header_wrapper
       #header
         #header_content
-          %h1 Facts!
+          - link_to categories_path do
+            %h1 Facts!
           #nav
             = tabs_tag do |tab|
               = tab.categories 'Categories', categories_path
