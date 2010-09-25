@@ -26,7 +26,9 @@
               %p= raw("Not logged in. #{link_to('Sign in', new_user_session_url)}.")
           .clear
     - flash.each do |name, msg|
-      = content_tag :div, msg, :id => "flash_#{name}", :class => 'flash'
+      .flash{ :id => "flash_#{name}" }
+        .content
+          = msg
       - content_for(:javascript) do
         :javascript
           window.setTimeout('$("#flash_#{name}").slideUp(500)', 2000);
