@@ -6,6 +6,8 @@ module CategoriesHelper
       "#{pluralize(category.facts.count, 'fact')}"
     elsif category.children.count > 0
       "#{pluralize(category.children.count, 'category')}"
+    else
+      'empty'
     end
   end
 end
