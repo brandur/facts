@@ -1,4 +1,7 @@
 #wrapper
   #content
     %h2= @user.login.titleize
-    %p= "User has created #{pluralize(@user.categories.count, 'category')} and #{pluralize(@user.facts.count, 'fact')}. Last login was #{distance_of_time_in_words(@user.last_login_at, Time.now)} ago."
+    %p
+      = "User has created #{pluralize(@user.categories.count, 'category')} and #{pluralize(@user.facts.count, 'fact')}."
+      - unless @user.last_login_at.nil?
+        = "Last login was #{distance_of_time_in_words(@user.last_login_at, Time.now)} ago."

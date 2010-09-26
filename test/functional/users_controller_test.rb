@@ -5,6 +5,8 @@ class UsersControllerTest < ActionController::TestCase
     @user = users(:rand)
   end
 
+# commented out until we put in a mechanism to create new users
+=begin
   test "should get new" do
     get :new
     assert_response :success
@@ -17,6 +19,7 @@ class UsersControllerTest < ActionController::TestCase
 
     assert_redirected_to user_path(assigns(:user))
   end
+=end
 
   test "should show user" do
     get :show, :id => @user.to_param
