@@ -52,4 +52,9 @@ class CategoriesControllerTest < ActionController::TestCase
 
     assert_redirected_to categories_path
   end
+
+  test "should get new form partial" do
+    get :new_form, :id => @category.id
+    assert_response :success
+  end
 end

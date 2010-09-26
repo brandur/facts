@@ -8,21 +8,31 @@ $('.standin').live 'click', ->
       item.removeClass('standin')
       item.find('h3:first').removeClass('standin_header')
       item.children('.content').html(data)
-      item.children('.content').hide().slideDown 'fast', ->
-        item.children('.content').css('display', '');
+      item.children('.content').slideDown('fast')
 
 # Hides a category's full content and shows its standin token instead.
 $('a.hide_content').live 'click', ->
   item = $(this).parents('.category:first')
   item.find('.category_tools:first').children('.category_tool').hide()
   item.children('.content').slideUp('fast')
+  # Hide tools in case they're visible
+  item.find('.category_tools:first .actions:visible').slideUp('fast')
   item.addClass('standin')
   item.find('h3:first').addClass('standin_header')
 
 # Expands a category's actions (e.g. "new child category" or "new fact")
 $('a.actions_expand').live 'click', ->
-  item = $(this).parent('.category_tools')
-  item.find('.actions:hidden').slideDown('fast')
+  item = $(this).parents('.category:first')
+  actions = item.find('.category_tools:first .actions')
+  # Check for the case where we've already loaded a form
+  if actions.children().length > 0
+    actions.slideDown 'fast'
+    return
+  $.get '/categories/new_form?id=' + item.attr('id'), 
+    {}, 
+    (data) ->
+      actions.html(data)
+      actions.slideDown 'fast'
 
 # Hides a category's actions
 $('a.cancel').live 'click', ->

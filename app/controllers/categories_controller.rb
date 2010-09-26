@@ -123,4 +123,9 @@ class CategoriesController < ApplicationController
       end
     end
   end
+
+  def new_form
+    @category = Category.find(params[:id])
+    render 'new_form', :layout => false
+  end
 end

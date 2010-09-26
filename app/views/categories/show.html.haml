@@ -2,7 +2,7 @@
   - if @category.ancestors.count > 0
     %p.ancestors= raw @category.ancestors.reverse.collect{ |c| link_to c.name, category_path(c) }.push('').join(' / ')
   %ul.categories#root
-    %li.category.root_category.last
+    %li.category.root_category.last{ :id => @category.id }
       %h2= @category.name
       .meta
         %span.count= count_str(@category)

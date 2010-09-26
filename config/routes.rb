@@ -7,6 +7,7 @@ Facts::Application.routes.draw do
   # Destroy without ID (not standard REST)
   match '/user_sessions(.:format)', :to => 'user_sessions#destroy', :via => :delete
 
+  match '/categories/new_form', :to => 'categories#new_form'
   match '/categories/search.json', :to => 'categories#search'
 
   match '/facts/daily(.:format)', :to => 'facts#daily'
