@@ -1,9 +1,8 @@
-.clear
-%li
+%li.type
   .new_fact_form
     = render :partial => 'facts/form', :locals => { :fact => Fact.new(:category_id => @category.id) }
-%li
+%li.type
   .new_category_form
     = render :partial => 'form', :locals => { :category => Category.new(:category_id => @category.id) }
-%li
-  %a.cancel{ :href => 'javascript:' } Cancel
+%li.type.last
+  %a.tool_cancel.category_tool{ :href => 'javascript:' } Cancel

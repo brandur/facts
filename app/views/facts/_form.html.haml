@@ -1,18 +1,12 @@
 %ul.form_inputs
   = semantic_form_for fact do |f|
-    - if fact.errors.any?
-      #errorExplanation
-        %h2= "#{pluralize(fact.errors.count, "error")} prohibited this fact from being saved:"
-        %ul
-          - fact.errors.full_messages.each do |msg|
-            %li= msg
+    = f.inputs do
+      - if !fact.category
+        = f.input :category
+      - else
+        = f.input :category_id, :value => fact.category.id, :as => :hidden
+      .fact_content
+        = f.input :content, :hint => 'Fact body. Markdown content is accepted.', :input_html => { :class => 'informative' }
 
-    - if !fact.category
-      = f.input :category
-    - else
-      = f.input :category_id, :value => fact.category.id, :as => :hidden
-    .fact_content
-      = f.input :content, :hint => 'Fact body. Markdown content is accepted.'
-
-    .actions
+    .form_actions
       = f.submit 'Save'

@@ -1,8 +1,9 @@
 .category_tools
-  = link_to "Permalink", category, :class => [ :tool_permalink, :tool, :category_tool ]
+  = link_to 'Permalink', category, :class => [ :tool_permalink, :tool, :category_tool ]
   - if authorized?(category)
     %a.tool_new.actions_expand.tool.category_tool{ :href => 'javascript:' } New fact/category
   - if !defined?(can_hide) || can_hide
-    %a.tool_hide.hide_content.tool.category_tool{ :href => 'javascript:' } Hide
+    %a.tool.tool_hide.category_tool{ :href => 'javascript:' } Hide
+  .clear
   %ul.actions.hide
   .clear

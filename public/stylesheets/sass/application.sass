@@ -51,6 +51,10 @@ input[type="text"], input[type="password"]
   background: -moz-linear-gradient(center top,#e8e8d0,#ddeeff 25%)
   background: -webkit-gradient(linear,center top,center bottom,color-stop(0,#e8e8d0),color-stop(0.25,#ddeeff))
 
+  &:focus
+    background: -moz-linear-gradient(center top,#e8e8d0,#eeffff 25%)
+    background: -webkit-gradient(linear,center top,center bottom,color-stop(0,#e8e8d0),color-stop(0.25,#eeffff))
+
 input[type="submit"]
   font-size: 20px
   padding: 6px 20px 8px
@@ -75,6 +79,9 @@ input[type="submit"]
 
 .hide
   display: none
+
+.informative
+  color: #aaa
 
 #header_wrapper
   height: 45px
@@ -200,9 +207,6 @@ input[type="submit"]
         font-size: 16px
         margin: 0 0 8px
 
-      .informative
-        color: #aaa
-
   p.ancestors
     font-size: 16px
     font-weight: 200
@@ -210,11 +214,52 @@ input[type="submit"]
     padding: 0 0 0 6px
     overflow: hidden
 
-  ul.actions, ul.categories, ul.facts
+  ul.categories, ul.facts
     padding: 0 0 0 30px
 
   ul.actions
+    border-top: $common_border
     list-style-type: none
+    margin: 6px 0 0 0
+    padding: 6px 0 0 0
+
+    li.type
+      border-bottom: $common_border
+      padding: 12px 0
+
+      input[type="text"]
+
+      input[type="submit"]
+        font-size: 12px
+        margin: 0
+        padding: 2px 12px 4px
+        -webkit-border-radius: 12px
+        -moz-border-radius: 12px
+        border-radius: 12px
+
+      fieldset
+        border: 0
+        margin: 0
+        padding: 0
+
+        ol
+          list-style-type: none
+          padding: 0
+
+          label
+            display: none
+
+          p.inline-hints
+            color: $meta_text_color
+            margin: 2px 0
+
+      a.tool_cancel
+        background: transparent url('/images/tool_cancel.png') no-repeat scroll 0 1px
+        display: inline !important
+        margin: 0
+
+    .last
+      border-bottom: 0
 
   ul#root
     border-left: 0

@@ -12,7 +12,7 @@ $('.standin').live 'click', ->
       content.slideDown('fast')
 
 # Hides a category's full content and shows its standin token instead.
-$('a.hide_content').live 'click', ->
+$('a.tool_hide').live 'click', ->
   item = $(this).parents('.category:first')
   item.find('.category_tools:first').children('.category_tool').hide()
   item.children('.content').slideUp('fast')
@@ -33,19 +33,22 @@ $('a.actions_expand').live 'click', ->
     {}, 
     (data) ->
       actions.html(data)
+      actions.find('input#category_name').attr('value', 'Category name')
+      actions.find('input#fact_content').attr('value', 'Fact content')
       actions.slideDown 'fast'
 
 # Hides a category's actions
-$('a.cancel').live 'click', ->
+$('a.tool_cancel').live 'click', ->
   item = $(this).parents('.category_tools:first')
   item.find('.actions:visible').slideUp('fast')
  
 $('li.category').live 'mouseover mouseout', (event) ->
   return if $(this).hasClass('standin')
+  tools = $(this).find('.category_tools:first').children('.category_tool')
   if (event.type == 'mouseover')
-    $(this).find('.category_tools:first').children('.category_tool').show()
+    tools.show()
   else
-    $(this).find('.category_tools:first').children('.category_tool').hide()
+    tools.hide()
 
 $('li.fact').live 'mouseover mouseout', (event) ->
   if (event.type == 'mouseover')
@@ -57,17 +60,19 @@ $('li.fact').live 'mouseover mouseout', (event) ->
 # value in it, blank it out in anticipation of user input
 $('input.informative').live 'focus', ->
   $(this).removeClass('informative')
-  if ($(this).attr('value') == 'Login' || ($(this).attr('value') == 'Password'))
-      $(this).attr('value', '')
+  value = $(this).attr('value')
+  if (value == 'Login' || value == 'Password' || value == 'Category name' || value == 'Fact content')
+    $(this).attr('value', '')
+
+setValueIfEmpty = (selector, value) ->
+  item = $(selector)
+  if (item.attr('value') == '')
+    item.attr('value', value)
+  else
+    item.removeClass('informative')
 
 $(document).ready ->
   # Put informative values in login/password fields unless those fields 
   # already contain a value
-  if ($('input#user_session_login').attr('value') == '')
-    $('input#user_session_login').attr('value', 'Login')
-  else
-    $('input#user_session_login').removeClass('informative')
-  if ($('input#user_session_password').attr('value') == '')
-    $('input#user_session_password').attr('value', 'Password')
-  else
-    $('input#user_session_password').removeClass('informative')
+  setValueIfEmpty 'input#user_session_login', 'Login'
+  setValueIfEmpty 'input#user_session_password', 'Password'
