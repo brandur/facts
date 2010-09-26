@@ -14,7 +14,8 @@
         - classes = 'category'
         - classes += ' last' if c == category.children.last
         - classes += ' standin' if c.children.count > 0 || c.facts.count > 0
-        %li{ :id => c.id, :class => classes }
+        / onclick is here only to provide a hint for Vimperator
+        %li{ :id => c.id, :class => classes, :onclick => '' }
           %h3.standin_header= c.name
           .meta
             %span.count= count_str(c)
