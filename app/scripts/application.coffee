@@ -2,13 +2,14 @@
 # for that category is clicked.
 $('.standin').live 'click', ->
   item = $(this)
+  content = item.children('.content')
   $.get '/categories/' + item.attr('id'), 
     { 'partial': true }, 
     (data) ->
       item.removeClass('standin')
       item.find('h3:first').removeClass('standin_header')
-      item.children('.content').html(data)
-      item.children('.content').slideDown('fast')
+      content.html(data)
+      content.slideDown('fast')
 
 # Hides a category's full content and shows its standin token instead.
 $('a.hide_content').live 'click', ->
