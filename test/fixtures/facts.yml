@@ -157,11 +157,11 @@ kola_superdeep_borehole_one:
   category: kola_superdeep_borehole
 
 kola_superdeep_borehole_two:
-  content: Project was stopped when temperatures in the hole turned out to be 180 degrees C instead of the expected 10 degrees C.
+  content: Project was stopped when temperatures in the hole turned out to be 180C instead of the expected 100C.
   category: kola_superdeep_borehole
 
 kola_superdeep_borehole_three:
-  content: Temperatures at 15 000 m would have been a project 300 degrees C, at which the drill bit would no longer work.
+  content: Temperatures at 15 000 m would have been a projected 300C, at which the drill bit would no longer work.
   category: kola_superdeep_borehole
 
 oil_one:

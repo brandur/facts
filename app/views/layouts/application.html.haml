@@ -14,12 +14,13 @@
     #header_wrapper
       #header
         #header_content
-          - link_to categories_path do
+          = link_to categories_path do
             %h1 Facts!
           #nav
             = tabs_tag do |tab|
               = tab.categories 'Categories', categories_path
               = tab.facts      'Facts',      url_for(:controller => :facts, :action => :daily)
+              = tab.pages      'About',      about_path
           #login_status
             - if current_user
               %p= raw("Logged in as #{link_to("#{current_user.login}", current_user)}. #{link_to('Sign out', user_sessions_url, :method => :delete)}.")

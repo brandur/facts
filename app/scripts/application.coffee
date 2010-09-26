@@ -42,17 +42,21 @@ $('li.fact').live 'mouseover mouseout', (event) ->
   else
     $(this).find('.fact_tool').hide()
 
+# When an informative input is focused and appears to have a system-entered 
+# value in it, blank it out in anticipation of user input
 $('input.informative').live 'focus', ->
   $(this).removeClass('informative')
   if ($(this).attr('value') == 'Login' || ($(this).attr('value') == 'Password'))
       $(this).attr('value', '')
 
 $(document).ready ->
-    if ($('input#user_session_login').attr('value') == '')
-        $('input#user_session_login').attr('value', 'Login')
-    else
-        $('input#user_session_login').removeClass('informative')
-    if ($('input#user_session_password').attr('value') == '')
-        $('input#user_session_password').attr('value', 'Password')
-    else
-        $('input#user_session_password').removeClass('informative')
+  # Put informative values in login/password fields unless those fields 
+  # already contain a value
+  if ($('input#user_session_login').attr('value') == '')
+    $('input#user_session_login').attr('value', 'Login')
+  else
+    $('input#user_session_login').removeClass('informative')
+  if ($('input#user_session_password').attr('value') == '')
+    $('input#user_session_password').attr('value', 'Password')
+  else
+    $('input#user_session_password').removeClass('informative')

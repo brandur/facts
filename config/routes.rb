@@ -15,6 +15,9 @@ Facts::Application.routes.draw do
   # Bistro Car
   match '/javascripts/bundle/:bundle.js', :to => 'bistro_car/bundle#show'
 
+  # Pages
+  match '/about', :to => 'pages#about'
+
   match '/*slug', :to => 'categories#show'
 
   root :to => "categories#index"
