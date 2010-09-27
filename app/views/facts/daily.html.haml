@@ -6,6 +6,6 @@
         %li.fact{ :id => fact.id }
           = raw(fact.content_html)
           .meta
-            %span.age= raw "#{distance_of_time_in_words(fact.created_at, Time.now)} ago by #{link_to fact.category.user.login, fact.category.user}"
+            %span.age= raw "#{distance_of_time_in_words(fact.created_at, Time.now)} ago by #{link_to fact.category.user.login, fact.category.user} under #{link_to fact.category.name, fact.category}"
             = link_to "Permalink", fact, :class => [ :tool_permalink, :tool, :fact_tool ]
             .clear
