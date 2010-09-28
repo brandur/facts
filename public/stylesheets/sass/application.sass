@@ -104,7 +104,8 @@ input[type="submit"]
 #header
   color: #fff
   height: 40px
-  background-color: #40404c
+  background-color: #40404c /* fallback color */
+  background-image: url('/images/back_header.png') /* fallback image */
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.08, rgb(76,68,90)), color-stop(0.61, rgb(0,0,0)))
   background-image: -moz-linear-gradient(center top, rgb(76,68,90) 8%, rgb(0,0,0) 61%) 
   @include shadow(5px)
