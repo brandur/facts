@@ -6,3 +6,13 @@
         = "User has created #{pluralize(@user.categories.count, 'category')} and #{pluralize(@user.facts.count, 'fact')}."
         - unless @user.last_login_at.nil?
           = "Last login was #{distance_of_time_in_words(@user.last_login_at, Time.now)} ago."
+    - if @user.facts.count > 0
+      %h2 Recent Facts
+      %ul.facts
+        - @recent_facts.each do |fact|
+          %li.fact{ :id => fact.id }
+            = raw(fact.content_html)
+            .meta
+              %span.age= raw "#{distance_of_time_in_words(fact.created_at, Time.now)} ago by #{link_to @user.login, @user} under #{link_to fact.category.name, fact.category}"
+              = link_to "Permalink", fact, :class => [ :tool_permalink, :tool, :fact_tool ]
+              .clear
