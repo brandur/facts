@@ -28,6 +28,7 @@ class CategoriesController < ApplicationController
   def show
     if params[:slug]
       @category = Category.find_by_slug(params[:slug], :include => [ :children, :facts ])
+      raise ActiveRecord::RecordNotFound unless @category
     else
       @category = Category.find(params[:id], :include => [ :children, :facts ])
     end
