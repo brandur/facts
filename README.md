@@ -1,8 +1,10 @@
-== Facts
+Facts
+=====
 
 Facts is a personal tool for data organization and memory retention.
 
-=== About
+About
+-----
 
 Many of us are driven to learn. We read books, magazines, and journals, go to talks, watch documentaries, marathon TED, and generally consume media our entire lives in an effort to attain our goal of knowing. But the mind is a fickle thing, and our memory betrays us, letting most of our hard-earned learning vanish into the aether.
 
@@ -14,3 +16,7 @@ The Facts source is available on GitHub under an open license so that you can de
 
 Welcome to Facts, your secret weapon for winning arguments.
 
+Demo
+----
+
+See a [demo here](http://facts.brandur.org).
