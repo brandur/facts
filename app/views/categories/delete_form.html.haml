@@ -1,0 +1,13 @@
+%li
+  - if @category.children.count > 0 && @category.facts.count > 0
+    %p= "Are you sure you want to delete #{@category.name}? #{pluralize(@category.children.count, 'subcategory')} and #{pluralize(@category.facts.count, 'fact')} will also be deleted."
+  - elsif @category.children.count > 0
+    %p= "Are you sure you want to delete #{@category.name}? #{pluralize(@category.children.count, 'subcategory')} will also be deleted."
+  - elsif @category.facts.count > 0
+    %p= "Are you sure you want to delete #{@category.name}?  #{pluralize(@category.facts.count, 'fact')} will also be deleted."
+  - else
+    %p= "Are you sure you want to delete #{@category.name}?"
+  = form_for @category, :url => category_path(@category, false), :html => { :method => :delete } do |f|
+    = f.submit 'Delete', :class => :critical
+%li.last
+  %a.tool_cancel.category_tool{ :href => 'javascript:' } Cancel

@@ -69,7 +69,7 @@ class FactsController < ApplicationController
         format.html { render :action => "new" }
         format.json { render :json => @fact.errors, :status => :unprocessable_entity }
       rescue UnauthorizedError
-        format.html { redirect_to(facts_url, :notice => 'Fact category must be owned by you.') }
+        format.html { redirect_to(categories_url, :notice => 'Fact category must be owned by you.') }
         format.json { head :unauthorized }
       end
     end
@@ -91,7 +91,7 @@ class FactsController < ApplicationController
         format.html { render :action => "edit" }
         format.json { render :json => @fact.errors, :status => :unprocessable_entity }
       rescue UnauthorizedError
-        format.html { redirect_to(facts_url, :notice => 'No update rights to a fact not owned by you.') }
+        format.html { redirect_to(categories_url, :notice => 'No update rights to a fact not owned by you.') }
         format.json { head :unauthorized }
       end
     end
@@ -107,12 +107,17 @@ class FactsController < ApplicationController
         raise UnauthorizedError unless authorized? @fact.category
 
         @fact.destroy
-        format.html { redirect_to(facts_url, :notice => 'Fact was successfully deleted.') }
+        format.html { redirect_to(categories_url, :notice => 'Fact was successfully deleted.') }
         format.json { head :ok }
       rescue UnauthorizedError
-        format.html { redirect_to(facts_url, :notice => 'No deletion rights to a fact not owned by you.') }
+        format.html { redirect_to(categories_url, :notice => 'No deletion rights to a fact not owned by you.') }
         format.json { head :unauthorized }
       end
     end
+  end
+
+  def delete_form
+    @fact = Fact.find(params[:id])
+    render 'delete_form', :layout => false
   end
 end

@@ -74,6 +74,17 @@ input[type="submit"]
     background: -moz-linear-gradient(center top,#b8ec53,#359a01 100%)
     background: -webkit-gradient(linear,center top,center bottom,color-stop(0,#98cc33),color-stop(1,#359a01))
 
+input[type="submit"].critical
+  border: 1px solid #eee
+  background-color: #d00
+  background: -moz-linear-gradient(center top,#d00,#444 100%)
+  background: -webkit-gradient(linear,center top,center bottom,color-stop(0,#d00),color-stop(1,#444))
+
+  &:hover
+    background-color: #f00
+    background: -moz-linear-gradient(center top,#f00,#444 100%)
+    background: -webkit-gradient(linear,center top,center bottom,color-stop(0,#f00),color-stop(1,#444))
+
 .clear
   clear: both
 
@@ -163,6 +174,11 @@ input[type="submit"]
   overflow: hidden
 
   $common_border: 1px solid #ccc
+
+  a.tool_cancel
+    background: transparent url('/images/tool_cancel.png') no-repeat scroll 0 1px
+    display: inline !important
+    margin: 0
 
   div.categories_wrapper
     border-top: $common_border
@@ -255,13 +271,33 @@ input[type="submit"]
             color: $meta_text_color
             margin: 2px 0
 
-      a.tool_cancel
-        background: transparent url('/images/tool_cancel.png') no-repeat scroll 0 1px
-        display: inline !important
-        margin: 0
-
       div.new_category_form, div.new_fact_form
         padding: 0 6px
+
+    .last
+      border-bottom: 0
+
+  ul.delete
+    border-top: $common_border
+    list-style-type: none
+    margin: 6px 0 0 0
+    padding: 6px 0 0 0
+
+    input[type="submit"]
+      font-size: 12px
+      margin: 0 6px
+      padding: 2px 12px 4px
+      -webkit-border-radius: 12px
+      -moz-border-radius: 12px
+      border-radius: 12px
+
+    li
+      border-bottom: $common_border
+      padding: 12px 0
+
+    p
+      margin: 0 6px
+      padding: 0 0 6px 0
 
     .last
       border-bottom: 0
@@ -306,6 +342,9 @@ input[type="submit"]
           display: none
           margin: 0 0 0 8px
           padding: 0 0 0 16px
+
+        a.tool_delete
+          background: transparent url('/images/tool_delete.png') no-repeat scroll 0 1px
 
         a.tool_hide
           background: transparent url('/images/tool_hide.png') no-repeat scroll 0 1px
@@ -355,6 +394,11 @@ input[type="submit"]
 
         span.age
           float: left
+
+        ul.delete
+        
+          a.tool_cancel, input
+            margin: 0
 
       p
         color: $text_color

@@ -1,0 +1,6 @@
+%li
+  %p= "Are you sure you want to delete this fact?"
+  = form_for @fact, :url => fact_path(@fact), :html => { :method => :delete } do |f|
+    = f.submit 'Delete', :class => :critical
+%li.last
+  %a.tool_cancel.category_tool{ :href => 'javascript:' } Cancel

@@ -24,6 +24,7 @@ $('a.tool_hide').live 'click', ->
 # Expands a category's actions (e.g. "new child category" or "new fact")
 $('a.actions_expand').live 'click', ->
   item = $(this).parents('.category:first')
+  item.find('.category_tools:first .delete:visible').slideUp 'fast'
   actions = item.find('.category_tools:first .actions')
   # Check for the case where we've already loaded a form
   if actions.children().length > 0
@@ -37,10 +38,41 @@ $('a.actions_expand').live 'click', ->
       actions.find('input#fact_content').attr('value', 'Fact content')
       actions.slideDown 'fast'
 
-# Hides a category's actions
+# Expands a category's delete action
+$('a.tool_delete.category_tool').live 'click', ->
+  item = $(this).parents('.category:first')
+  item.find('.category_tools:first .actions:visible').slideUp 'fast'
+  deleteStandin = item.find('.category_tools:first .delete')
+  # Check for the case where we've already loaded a form
+  if deleteStandin.children().length > 0
+    deleteStandin.slideDown 'fast'
+    return
+  $.get '/categories/delete_form?id=' + item.attr('id'), 
+    {}, 
+    (data) ->
+      deleteStandin.html(data)
+      deleteStandin.slideDown 'fast'
+
+# Expands a fact's delete action
+$('a.tool_delete.fact_tool').live 'click', ->
+  item = $(this).parents('.fact:first')
+  deleteStandin = item.find('.delete')
+  # Check for the case where we've already loaded a form
+  if deleteStandin.children().length > 0
+    deleteStandin.slideDown 'fast'
+    return
+  $.get '/facts/delete_form?id=' + item.attr('id'), 
+    {}, 
+    (data) ->
+      deleteStandin.html(data)
+      deleteStandin.slideDown 'fast'
+
+# Hides a category's actions, including new fact/category or delete
 $('a.tool_cancel').live 'click', ->
-  item = $(this).parents('.category_tools:first')
-  item.find('.actions:visible').slideUp('fast')
+  item = $(this).parents('.fact:first')
+  if item.length < 1
+      item = $(this).parents('.category:first')
+  item.find('.actions:first:visible, .delete:first:visible').slideUp('fast')
  
 $('li.category').live 'mouseover mouseout', (event) ->
   return if $(this).hasClass('standin')

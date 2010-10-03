@@ -2,8 +2,10 @@
   = link_to 'Permalink', category, :class => [ :tool_permalink, :tool, :category_tool ]
   - if authorized?(category)
     %a.tool_new.actions_expand.tool.category_tool{ :href => 'javascript:' } New fact/category
+    %a.tool_delete.tool.category_tool{ :href => 'javascript:' } Delete
   - if !defined?(can_hide) || can_hide
     %a.tool.tool_hide.category_tool{ :href => 'javascript:' } Hide
   .clear
   %ul.actions.hide
+  %ul.delete.hide
   .clear

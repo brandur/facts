@@ -6,6 +6,10 @@
         .meta
           %span.age= raw "#{distance_of_time_in_words(f.created_at, Time.now)} ago by #{link_to category.user.login, category.user}"
           = link_to "Permalink", f, :class => [ :tool_permalink, :tool, :fact_tool ]
+          - if authorized?(f)
+            %a.tool_delete.tool.fact_tool{ :href => 'javascript:' } Delete
+          .clear
+          %ul.delete.hide
           .clear
 - if category.children.count > 0
   .categories_wrapper

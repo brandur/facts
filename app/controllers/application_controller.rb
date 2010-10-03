@@ -8,7 +8,13 @@ class ApplicationController < ActionController::Base
 
   helper_method :authorized?
   def authorized?(obj)
-    current_user && obj.user_id == current_user.id
+    if obj.class == Category
+      current_user && obj.user_id == current_user.id
+    elsif obj.class == Fact
+      current_user && obj.category.user_id == current_user.id
+    else
+      false
+    end
   end
 
   helper_method :current_user_session
