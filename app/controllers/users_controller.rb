@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find_by_login(params[:id])
+    raise ActiveRecord::RecordNotFound unless @user
     @recent_facts = @user.facts.order('created_at DESC').limit(10).includes(:category)
 
     respond_to do |format|
