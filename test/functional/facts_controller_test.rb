@@ -45,6 +45,6 @@ class FactsControllerTest < ActionController::TestCase
       delete :destroy, :id => @fact.to_param
     end
 
-    assert_redirected_to facts_path
+    assert_redirected_to categories_path
   end
 end

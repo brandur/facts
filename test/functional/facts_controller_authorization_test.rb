@@ -40,7 +40,7 @@ class FactsControllerAuthorizationTest < ActionController::TestCase
   test "should not be able to update another user's fact" do
     UserSession.create(users(:mat))
     put :update, :id => @fact.to_param, :fact => @fact.attributes
-    assert_redirected_to facts_path
+    assert_redirected_to categories_path
   end
 
   test "should not be able to destroy another user's fact" do
@@ -50,7 +50,7 @@ class FactsControllerAuthorizationTest < ActionController::TestCase
       delete :destroy, :id => @fact.to_param
     end
 
-    assert_redirected_to facts_path
+    assert_redirected_to categories_path
   end
 
   test "should not be able to use another user's category" do
@@ -63,6 +63,6 @@ class FactsControllerAuthorizationTest < ActionController::TestCase
       post :create, :fact => fact.attributes
     end
 
-    assert_redirected_to facts_path
+    assert_redirected_to categories_path
   end
 end

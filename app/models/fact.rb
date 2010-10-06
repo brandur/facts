@@ -1,5 +1,4 @@
-require 'lib/database_helper'
-require 'rdiscount'
+require 'database_helper'
 
 class Fact < ActiveRecord::Base
   extend DatabaseHelper
