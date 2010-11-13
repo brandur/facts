@@ -73,7 +73,7 @@ mach_one:
   category: mach
 
 mach_two:
-  content: 'Speed of sounc in dry air: 343 m/s'
+  content: 'Speed of sound in dry air: 343 m/s'
   category: mach
 
 mach_three:
