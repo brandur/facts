@@ -4,8 +4,8 @@
     %title= content_for?(:title) ? yield(:title) : 'Facts'
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js', 'rails'
-    = #coffee_script_bundle
-    = coffee_script_bundle :mode => :inline
+    = coffee_script_bundle
+    = #coffee_script_bundle :mode => :inline
     = csrf_meta_tag
     %meta{ 'http-equiv' => 'content-type', :content => 'text/html; charset=UTF-8' }
     = yield :head
