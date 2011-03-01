@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render :json => @user }
+      format.json { render :json => @user, :only => [ :created_at, :current_login_at, :last_login_at, :last_request_at, :login, :login_count, :updated_at ] }
     end
   end
 
