@@ -11,6 +11,13 @@ class User < ActiveRecord::Base
   validates_presence_of :login
   validates_uniqueness_of :login
 
+  def to_json
+    json = { :user => {
+      :id => id, :last_login_at => last_login_at, :login => login, :login_count => login_count
+    } }
+    json
+  end
+
   def to_param
     login
   end

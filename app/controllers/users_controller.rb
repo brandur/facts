@@ -12,7 +12,11 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render :json => @user, :only => [ :created_at, :current_login_at, :last_login_at, :last_request_at, :login, :login_count, :updated_at ] }
+      format.json do
+        stats = {}
+        stats[:facts_by_day] = Hash[@user.facts.where('facts.created_at > ?', 30.days.ago.to_date).group_by{ |f| f.created_at.to_date }.map{ |day, facts| [ day.iso8601, facts.count ] }]
+        render :json => { :user => @user.to_json, :recent_facts => @recent_facts.collect{ |f| f.to_json }, :stats => stats  }.to_json
+      end
     end
   end
 
