@@ -17,7 +17,7 @@ class Fact < ActiveRecord::Base
 
   def to_json
     json = { :fact => {
-      :id => id, :category_id => category_id, :content => content
+      :id => id, :category_id => category_id, :content => content, :created_at => created_at
     } }
     json[:fact][:category] = category.to_json if category.loaded?
     json
