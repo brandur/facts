@@ -73,7 +73,7 @@ class CategoriesController < ApplicationController
         raise SaveError unless @category.save
 
         format.html { redirect_to(category_path(@category), :notice => 'Category was successfully created.') }
-        format.json { render :json => @category, :status => :created, :location => @category }
+        format.json { render :json => @category.to_json, :status => :created, :location => @category }
       rescue SaveError
         format.html { render :action => "new" }
         format.json { render :json => @category.errors, :status => :unprocessable_entity }
