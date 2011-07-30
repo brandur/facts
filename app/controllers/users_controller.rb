@@ -8,7 +8,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_login(params[:id])
     raise ActiveRecord::RecordNotFound unless @user
-    @recent_facts = @user.facts.order('created_at DESC').limit(10).includes(:category)
+    limit = params[:limit] || 10
+    @recent_facts = @user.facts.order('created_at DESC').limit(limit).includes(:category)
 
     respond_to do |format|
       format.html
