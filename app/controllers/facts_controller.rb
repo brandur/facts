@@ -33,7 +33,7 @@ class FactsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.haml
-      format.json { render :json => @fact }
+      format.json { render :json => @fact.to_json }
     end
   end
 
@@ -64,7 +64,7 @@ class FactsController < ApplicationController
         raise SaveError unless @fact.save
 
         format.html { redirect_to(@fact, :notice => 'Fact was successfully created.') }
-        format.json { render :json => @fact, :status => :created, :location => @fact }
+        format.json { render :json => @fact.to_json, :status => :created, :location => @fact }
       rescue SaveError
         format.html { render :action => "new" }
         format.json { render :json => @fact.errors, :status => :unprocessable_entity }
