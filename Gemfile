@@ -14,6 +14,7 @@ gem 'formtastic'
 gem 'jquery-rails'
 gem 'haml'
 gem 'rdiscount'
+gem 'sass'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'tabs_on_rails'
 
